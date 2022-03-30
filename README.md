@@ -1,11 +1,19 @@
 # Algorithm
 
 
+## [DFS/BFS](https://zest1923.tistory.com/72)
+- Swift 기초공부 후 BFS 업로드 예정..
+<details> 
+<summary>문제</summary> 
+
+</details>
+
 
 ## [부르트포스](https://zest1923.tistory.com/70)
 
 <details> 
 <summary>문제</summary> 
+
 - [x] [2309 - 일곱난쟁이](https://github.com/JIWON1923/Algorithm/tree/main/Baekjoon/bruteForce)
 - [ ] [6603번 - 로또](https://www.acmicpc.net/problem/6603)
 - [ ] [1182번 - 부분수열의 합](https://www.acmicpc.net/problem/1182)
