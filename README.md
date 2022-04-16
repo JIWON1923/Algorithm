@@ -7,8 +7,8 @@
 <details> 
 <summary>문제</summary> 
 - [x] [1260 - DFS와 BFS](https://www.acmicpc.net/problem/1260)
-- [ ] [2667 - 단지번호붙이기](https://www.acmicpc.net/problem/2667)
-- [ ] [2606 - 바이러스](https://www.acmicpc.net/problem/2606)
+- [x] [2667 - 단지번호붙이기](https://www.acmicpc.net/problem/2667)
+- [x] [2606 - 바이러스](https://www.acmicpc.net/problem/2606)
 
 </details>
 
