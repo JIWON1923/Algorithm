@@ -48,3 +48,13 @@
 
 
 </details>
+
+## ETC
+
+<details> 
+<summary>풀이 및 코드</summary> 
+
+- [x] [5525 - IOIOI ](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/etc/5525_IOIOI.swift)[✏️](https://zest1923.tistory.com/89)
+
+
+</details>
