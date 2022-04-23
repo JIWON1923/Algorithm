@@ -47,7 +47,7 @@
 <summary>풀이 및 코드</summary> 
 
 - [x] [2579 - 계단 오르기](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/DynamicProgramming/17219_findPassword.swift)[✏️](https://zest1923.tistory.com/88)
-
+- [x] [9461 - 파도반 수열](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/DynamicProgramming/9461_파도반수열.swift)[✏️](https://zest1923.tistory.com/92)
 
 </details>
 
