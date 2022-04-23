@@ -13,7 +13,8 @@
 - [x] [2606 - 바이러스](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/DFS_BFS/2606_virus.swift)[✏️](https://zest1923.tistory.com/76)
 - [x] [11724 - 연결 요소의 개수](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/DFS_BFS/11724_connectedComponent.swift)[✏️](https://zest1923.tistory.com/87)
 - [x] [1012 - 유기농 배추](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/DFS_BFS/1012_organicCabbage.swift)[✏️](https://zest1923.tistory.com/83)
-- [x] [10026 - 적록색약](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/DFS_BFS/10026-적록색약.swift)[✏️](https://zest1923.tistory.com/90)
+- [x] [10026 - 적록색약](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/DFS_BFS/10026_적록색약.swift)[✏️](https://zest1923.tistory.com/90)
+- [x] [1697 - 숨바꼭질](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/DFS_BFS/1697_숨바꼭질.swift)[✏️](https://zest1923.tistory.com/91)
 
 </details>
 
