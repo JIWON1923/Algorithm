@@ -33,7 +33,7 @@
 ## 부르트포스
 |**문제번호**|**코드**|**블로그**|
 |-------|----------------------------------------------------------------------------------|-------------------------------------|
-|2309|[일곱난쟁이](https://github.com/JIWON1923/Algorithm/tree/main/Baekjoon/bruteForce)|[✏️](https://zest1923.tistory.com/71)|
+|2309|[일곱난쟁이](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/bruteForce/sevenDwarfs.swift)|[✏️](https://zest1923.tistory.com/71)|
 
 
 
@@ -41,7 +41,7 @@
 ## Dynamic Programming
 |**문제번호**|**코드**|**블로그**|
 |-------|----------------------------------------------------------------------------------|-------------------------------------|
-|2579|[계단 오르기](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/Dynamic%20Programming/17219_findPassword.swift)|[✏️](https://zest1923.tistory.com/88)|
+|2579|[계단 오르기](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/Dynamic%20Programming/2579_upTheStairs.swift)|[✏️](https://zest1923.tistory.com/88)|
 |9461|[파도반 수열](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/Dynamic%20Programming/9461_파도반수열.swift)|[✏️](https://zest1923.tistory.com/92)|
 
 
