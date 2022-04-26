@@ -22,7 +22,7 @@
 |**문제번호**|**코드**|**블로그**|
 |-------|----------------------------------------------------------------------------------|-------------------------------------|
 |1762|[듣보잡](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/dataStructure/1764_neverHeard.swift)|[✏️](https://zest1923.tistory.com/85)|
-|1927|[최소힙](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/dataStructure/1927_최소힙.swift)|
+|1927|[최소힙](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/dataStructure/1927_최소힙.swift)||
 |9375|[패션왕 신혜빈](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/dataStructure/9375_fasionKing.swift)|[✏️](https://zest1923.tistory.com/86)|
 |11279|[최대힙](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/dataStructure/11279_최대힙.swift)||
 |17219|[비밀번호 찾기](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/dataStructure/17219_findPassword.swift)|[✏️](https://zest1923.tistory.com/84)|
@@ -49,4 +49,5 @@
 ## ETC
 |**문제번호**|**코드**|**블로그**|
 |-------|----------------------------------------------------------------------------------|-------------------------------------|
+|1676|[팩토리얼 0의 개수](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/etc/1676_팩토리얼0의개수.swift)||
 |5525|[IOIOI](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/etc/5525_IOIOI.swift)|[✏️](https://zest1923.tistory.com/89)|
