@@ -13,6 +13,7 @@
 |2606|[바이러스](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/DFS_BFS/2606_virus.swift)|[✏️](https://zest1923.tistory.com/76)|
 |2667|[단지 번호 붙이기](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/DFS_BFS/2667_apartmentComplexNumbering.swift)|[✏️](https://zest1923.tistory.com/77)|
 |7576|[토마토](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/DFS_BFS/7576_토마토.swift)|[✏️](https://zest1923.tistory.com/93)
+|7569|[토마토](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/DFS_BFS/7569_토마토.swift)||
 |11724|[연결 요소의 개수](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/DFS_BFS/11724_connectedComponent.swift)|[✏️](https://zest1923.tistory.com/87)|
 |10026|[적록색약](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/DFS_BFS/10026_적록색약.swift)|[✏️](https://zest1923.tistory.com/90)|
 
