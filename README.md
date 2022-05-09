@@ -35,6 +35,7 @@
 |**문제번호**|**코드**|**블로그**|
 |-------|----------------------------------------------------------------------------------|-------------------------------------|
 |2309|[일곱난쟁이](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/bruteForce/sevenDwarfs.swift)|[✏️](https://zest1923.tistory.com/71)|
+|14888|[연산자 끼워넣기](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/bruteForce/14888_연산자_끼워넣기.swift)||
 |15649|[N과 M (1)](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/bruteForce/15649_n과m_1.swift)||
 |15650|[N과 M (2)](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/bruteForce/15650_n과m_2.swift)||
 |15651|[N과 M (3)](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/bruteForce/15651_n과m_3.swift)||
