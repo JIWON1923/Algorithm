@@ -42,6 +42,7 @@
 |15650|[N과 M (2)](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/bruteForce/15650_n과m_2.swift)||
 |15651|[N과 M (3)](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/bruteForce/15651_n과m_3.swift)||
 |15652|[N과 M (4)](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/bruteForce/15652_n과m_4.swift)||
+|15663|[N과 M (9)](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/bruteForce/15663_N과M_9.swift)||
 
 ## Dynamic Programming
 |**문제번호**|**코드**|**블로그**|
