@@ -51,6 +51,11 @@
 |9461|[파도반 수열](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/Dynamic%20Programming/9461_파도반수열.swift)|[✏️](https://zest1923.tistory.com/92)|
 
 
+## 정렬
+|**문제번호**|**코드**|**블로그**|
+|-------|----------------------------------------------------------------------------------|-------------------------------------|
+|2579|[계단 오르기](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/sort/10825_국영수.swift)||
+
 
 ## ETC
 |**문제번호**|**코드**|**블로그**|
