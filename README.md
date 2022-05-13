@@ -54,8 +54,11 @@
 ## 정렬
 |**문제번호**|**코드**|**블로그**|
 |-------|----------------------------------------------------------------------------------|-------------------------------------|
-|10825|[국영수](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/sort/10825_국영수.swift)||
+
 |1015|[수열정렬](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/sort/1015_수열정렬.swift)||
+|10825|[국영수](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/sort/10825_국영수.swift)|[✏️](https://zest1923.tistory.com/96)|
+|11652|[카드](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/sort/11652_카드.swift)||
+
 
 ## ETC
 |**문제번호**|**코드**|**블로그**|
