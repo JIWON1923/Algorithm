@@ -1,6 +1,9 @@
 # Algorithm
 
 - 문제 제목을 클릭하면, GitHub 코드로, ✏️를 클릭하면 블로그로 이동합니다.
+[Beakjoon](#beakjoon)
+[Programmers](#programmers)
+
 
 # Beakjoon
 
@@ -74,3 +77,10 @@
 |-------|----------------------------------------------------------------------------------|-------------------------------------|
 |1676|[팩토리얼 0의 개수](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/etc/1676_팩토리얼0의개수.swift)||
 |5525|[IOIOI](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/etc/5525_IOIOI.swift)|[✏️](https://zest1923.tistory.com/89)|
+
+
+# Programmers
+## Level 1
+|**분류**|**코드**|**블로그**|
+|-------|----------------------------------------------------------------------------------|-------------------------------------|
+|연습문제|[직사각형 별 찍기](https://github.com/JIWON1923/Algorithm/blob/main/Programmers/Level1/직사각형별찍기.swift)||
