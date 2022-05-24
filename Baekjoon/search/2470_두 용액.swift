@@ -7,7 +7,7 @@ var result = [start, end]
 while start < end {
     let value = solution[start] + solution[end]
     if abs(value) < abs(minValue) {
-        result = [solution[start], solution[end]]
+        result = [start, end]
         if value == 0 { break }
         minValue = value
     }
@@ -16,4 +16,4 @@ while start < end {
     else { end -= 1 }
 }
 
-print(result[0], result[1])
+print(solution[result[0]], solution[result[1]])
