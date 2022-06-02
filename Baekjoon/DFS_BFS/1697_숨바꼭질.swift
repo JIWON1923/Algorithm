@@ -7,20 +7,17 @@ var queue = [input[0]]
 visited[input[0]].toggle()
 while true {
     let node = queue.removeFirst()
-    if node == input[1]{
-        break
-    }
+    if node == input[1]{ break }
     for i in 0..<3 {
         var next: Int
         if i == 0 { next = node-1 }
         else if i == 1 { next = node+1 }
         else { next = node*2 }
         
-        if vaild(n: next){
+        if vaild(n: next) {
             queue.append(next)
             depth[next] = depth[node] + 1
             visited[next].toggle()
-            
         }
     }
 }
