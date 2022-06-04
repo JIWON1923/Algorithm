@@ -1,6 +1,7 @@
 # Algorithm
 
 - 문제 제목을 클릭하면, GitHub 코드로, ✏️를 클릭하면 블로그로 이동합니다.
+- 코딩테스트 연습 (백준, 프로그래머스 등)
 [Beakjoon](#beakjoon)
 [Programmers](#programmers)
 
