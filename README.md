@@ -8,21 +8,6 @@
 
 # Beakjoon
 
-## 그래프 탐색
-|**문제번호**|**코드**|**블로그**|
-|-------|----------------------------------------------------------------------------------|-------------------------------------|
-|1012|[유기농 배추](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/DFS_BFS/1012_organicCabbage.swift)|[✏️](https://zest1923.tistory.com/83)|
-|1260|[DFS와 BFS](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/DFS_BFS/dfsAndBfs.swift)|[✏️](https://zest1923.tistory.com/73)|
-|1697|[숨바꼭질](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/DFS_BFS/1697_숨바꼭질.swift)|[✏️](https://zest1923.tistory.com/91)|
-|2606|[바이러스](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/DFS_BFS/2606_virus.swift)|[✏️](https://zest1923.tistory.com/76)|
-|2667|[단지 번호 붙이기](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/DFS_BFS/2667_apartmentComplexNumbering.swift)|[✏️](https://zest1923.tistory.com/77)|
-|7576|[토마토](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/DFS_BFS/7576_토마토.swift)|[✏️](https://zest1923.tistory.com/93)
-|7569|[토마토](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/DFS_BFS/7569_토마토.swift)||
-|11724|[연결 요소의 개수](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/DFS_BFS/11724_connectedComponent.swift)|[✏️](https://zest1923.tistory.com/87)|
-|10026|[적록색약](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/DFS_BFS/10026_적록색약.swift)|[✏️](https://zest1923.tistory.com/90)|
-
-
-
 ## 자료구조
 |**문제번호**|**코드**|**블로그**|
 |-------|----------------------------------------------------------------------------------|-------------------------------------|
@@ -31,8 +16,6 @@
 |9375|[패션왕 신혜빈](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/dataStructure/9375_fasionKing.swift)|[✏️](https://zest1923.tistory.com/86)|
 |11279|[최대힙](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/dataStructure/11279_최대힙.swift)||
 |17219|[비밀번호 찾기](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/dataStructure/17219_findPassword.swift)|[✏️](https://zest1923.tistory.com/84)|
-
-
 
 
 ## 부르트포스
@@ -48,11 +31,19 @@
 |15652|[N과 M (4)](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/bruteForce/15652_n과m_4.swift)||
 |15663|[N과 M (9)](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/bruteForce/15663_N과M_9.swift)||
 
-## Dynamic Programming
+
+## 그래프 탐색
 |**문제번호**|**코드**|**블로그**|
 |-------|----------------------------------------------------------------------------------|-------------------------------------|
-|2579|[계단 오르기](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/Dynamic%20Programming/2579_upTheStairs.swift)|[✏️](https://zest1923.tistory.com/88)|
-|9461|[파도반 수열](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/Dynamic%20Programming/9461_파도반수열.swift)|[✏️](https://zest1923.tistory.com/92)|
+|1012|[유기농 배추](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/DFS_BFS/1012_organicCabbage.swift)|[✏️](https://zest1923.tistory.com/83)|
+|1260|[DFS와 BFS](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/DFS_BFS/dfsAndBfs.swift)|[✏️](https://zest1923.tistory.com/73)|
+|1697|[숨바꼭질](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/DFS_BFS/1697_숨바꼭질.swift)|[✏️](https://zest1923.tistory.com/91)|
+|2606|[바이러스](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/DFS_BFS/2606_virus.swift)|[✏️](https://zest1923.tistory.com/76)|
+|2667|[단지 번호 붙이기](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/DFS_BFS/2667_apartmentComplexNumbering.swift)|[✏️](https://zest1923.tistory.com/77)|
+|7576|[토마토](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/DFS_BFS/7576_토마토.swift)|[✏️](https://zest1923.tistory.com/93)
+|7569|[토마토](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/DFS_BFS/7569_토마토.swift)||
+|11724|[연결 요소의 개수](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/DFS_BFS/11724_connectedComponent.swift)|[✏️](https://zest1923.tistory.com/87)|
+|10026|[적록색약](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/DFS_BFS/10026_적록색약.swift)|[✏️](https://zest1923.tistory.com/90)|
 
 
 ## 정렬
@@ -66,7 +57,7 @@
 |20291|[파일 정리](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/sort/20291_파일정리.swift)|[✏️](https://zest1923.tistory.com/97)|
 
 
-## 정렬
+## 탐색
 |**문제번호**|**코드**|**블로그**|
 |-------|----------------------------------------------------------------------------------|-------------------------------------|
 |1764|[듣보잡](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/sort/1764_듣보잡.swift)
@@ -76,6 +67,14 @@
 |2805|[나무 자르기](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/sort/2805_나무자르기.swift)||
 |7795|[먹을 것인가 먹힐 것인가](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/sort/7795_먹을것인가%20먹힐것인가.swift)||
 |10816|[숫자 카드 2](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/sort/10816_숫자카드2.swift)||
+
+## Dynamic Programming
+|**문제번호**|**코드**|**블로그**|
+|-------|----------------------------------------------------------------------------------|-------------------------------------|
+|2579|[계단 오르기](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/Dynamic%20Programming/2579_upTheStairs.swift)|[✏️](https://zest1923.tistory.com/88)|
+|9461|[파도반 수열](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/Dynamic%20Programming/9461_파도반수열.swift)|[✏️](https://zest1923.tistory.com/92)|
+
+
 
 ## ETC
 |**문제번호**|**코드**|**블로그**|
