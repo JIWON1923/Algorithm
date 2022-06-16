@@ -64,6 +64,7 @@
 |1764|[듣보잡](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/sort/1764_듣보잡.swift)||
 |1920|[수 찾기](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/sort/1920_수찾기.swift)||
 |2110|[공유기 설치](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/sort/2110_공유기설치.swift)||
+|2343|[기타 레슨](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/sort/2343_기타레슨.swift)||
 |2470|[두 용액](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/sort/2470_두%20용액.swift)||
 |2512|[예산](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/sort/2512_예산.swift)||
 |2805|[나무 자르기](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/sort/2805_나무자르기.swift)||
