@@ -60,16 +60,16 @@
 ## 탐색
 |**문제번호**|**코드**|**블로그**|
 |-------|----------------------------------------------------------------------------------|-------------------------------------|
-|1654|[랜선자르기](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/sort/1654_랜선자르기.swift)||
-|1764|[듣보잡](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/sort/1764_듣보잡.swift)||
-|1920|[수 찾기](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/sort/1920_수찾기.swift)||
-|2110|[공유기 설치](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/sort/2110_공유기설치.swift)||
-|2343|[기타 레슨](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/sort/2343_기타레슨.swift)||
-|2470|[두 용액](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/sort/2470_두%20용액.swift)||
-|2512|[예산](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/sort/2512_예산.swift)||
-|2805|[나무 자르기](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/sort/2805_나무자르기.swift)||
-|7795|[먹을 것인가 먹힐 것인가](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/sort/7795_먹을것인가%20먹힐것인가.swift)||
-|10816|[숫자 카드 2](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/sort/10816_숫자카드2.swift)||
+|1654|[랜선자르기](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/search/1654_랜선자르기.swift)||
+|1764|[듣보잡](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/search/1764_듣보잡.swift)||
+|1920|[수 찾기](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/search/1920_수찾기.swift)||
+|2110|[공유기 설치](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/search/2110_공유기설치.swift)||
+|2343|[기타 레슨](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/search/2343_기타레슨.swift)||
+|2470|[두 용액](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/search/2470_두%20용액.swift)||
+|2512|[예산](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/search/2512_예산.swift)||
+|2805|[나무 자르기](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/search/2805_나무자르기.swift)||
+|7795|[먹을 것인가 먹힐 것인가](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/search/7795_먹을것인가%20먹힐것인가.swift)||
+|10816|[숫자 카드 2](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/search/10816_숫자카드2.swift)||
 
 ## Dynamic Programming
 |**문제번호**|**코드**|**블로그**|
