@@ -12,13 +12,19 @@
  */
 
 let n = Int(readLine()!)!
-let parts = Set(readLine()!.split(separator: " ").map { Int($0)! }.sorted())
+let temps = readLine()!.split(separator: " ").map { Int($0)! }
+var parts: [Int] = Array(repeating: 0, count: 1000001)
 let m = Int(readLine()!)!
-let estimate = readLine()!.split(separator: " ").map { Int($0)! }
+let estimate = readLine()!.split(separator: " ").map{ Int($0)! }
 var results = ""
 
-estimate.forEach { part in
-    results +=  parts.contains(part) ? "yes" : "no"
+temps.forEach { num in
+    parts[num] += 1
+}
+
+estimate.forEach { num in
+    results += parts[num] == 0 ? "no" : "yes"
     results += " "
 }
+
 print(results)
