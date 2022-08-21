@@ -69,7 +69,9 @@
 |2512|[예산](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/search/2512_예산.swift)||
 |2805|[나무 자르기](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/search/2805_나무자르기.swift)||
 |7795|[먹을 것인가 먹힐 것인가](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/search/7795_먹을것인가%20먹힐것인가.swift)||
+|10815|[숫자 카드](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/search/10815_숫자카드.swift)||
 |10816|[숫자 카드 2](https://github.com/JIWON1923/Algorithm/blob/main/Baekjoon/search/10816_숫자카드2.swift)||
+
 
 ## Dynamic Programming
 |**문제번호**|**코드**|**블로그**|
