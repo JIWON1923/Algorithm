@@ -12,29 +12,13 @@
  */
 
 let n = Int(readLine()!)!
-let parts = readLine()!.split(separator: " ").map { Int($0)! }.sorted()
+let parts = Set(readLine()!.split(separator: " ").map { Int($0)! }.sorted())
 let m = Int(readLine()!)!
 let estimate = readLine()!.split(separator: " ").map { Int($0)! }
 var results = ""
 
 estimate.forEach { part in
-    results += findPart(target: part) == -1 ? "no" : "yes"
+    results +=  parts.contains(part) ? "yes" : "no"
     results += " "
 }
-
 print(results)
-
-func findPart(target: Int) -> Int {
-    var (start, end) = (0, parts.count)
-    while start <= end {
-        let mid = (start + end) / 2
-        if parts[mid] == target {
-            return mid
-        } else if parts[mid] > target {
-            end = mid - 1
-        } else {
-            start = mid + 1
-        }
-    }
-    return -1
-}
