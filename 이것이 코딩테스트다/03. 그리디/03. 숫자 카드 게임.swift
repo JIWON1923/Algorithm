@@ -22,7 +22,6 @@ let input = readLine()!.split(separator: " ").map { Int($0)! }
 var minNumbers = [Int]()
 
 for _ in 0..<input[0] {
-    let colum = readLine()!.split(separator: " ").map { Int($0)! }
-    minNumbers.append(colum.min()!)
+    minNumbers.append(readLine()!.split(separator: " ").map { Int($0)! }.min()!)
 }
 print(minNumbers.max()!)
