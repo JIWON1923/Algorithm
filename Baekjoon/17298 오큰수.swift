@@ -9,18 +9,14 @@
 let n = Int(readLine()!)!
 let numbers = readLine()!.split { $0 == " " }.map { Int($0)! }
 var stack = [Int]()
-var result = [Int](repeating: -1, count: n)
+var result = [String](repeating: "-1", count: n)
 
 for i in 0 ..< n {
-    guard !stack.isEmpty else {
-        stack.append(i)
-        continue
-    }
-    for _ in 0 ..< stack.count {
+    while !stack.isEmpty {
         guard numbers[stack.last!] < numbers[i] else { break }
-        let prev = stack.removeLast()
-        result[prev] = numbers[i]
+        result[stack.removeLast()] = String(numbers[i])
     }
     stack.append(i)
 }
-result.forEach { print($0, terminator: " ") }
+
+print(result.joined(separator: " "))
