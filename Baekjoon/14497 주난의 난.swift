@@ -1,10 +1,10 @@
 let dy = [-1, 0, 1, 0]
 let dx = [0, 1, 0, -1]
 
-var input = readLine()!.split { $0 == " " }.map { Int($0)! }, (m, n) = (input[0], input[1])
-input = readLine()!.split { $0 == " " }.map { Int($0)! - 1 }
+var input = readLine()!.split { $0 == " " }.map { Int(String($0))! }, (m, n) = (input[0], input[1])
+input = readLine()!.split { $0 == " " }.map { Int(String($0))! - 1 }
 let (startY, startX, goalY, goalX) = (input[0], input[1], input[2], input[3])
-var visited = [[Int]](repeating: [Int](repeating: 0, count: n), count: m)
+var visited = [[Bool]](repeating: [Bool](repeating: false, count: n), count: m)
 var map = [[Character]]()
 var tempPositions = [Int]()
 var bfsQueue = [ 1000 * startY + startX ]
@@ -13,8 +13,8 @@ var count = 0
 for _ in 0 ..< m {
     map.append(readLine()!.map { $0 })
 }
-visited[startY][startX] = 1
-while map[goalY][goalX] == "#" {
+visited[startY][startX] = true
+outerLoop: while true {
     count += 1
     
     while !bfsQueue.isEmpty {
@@ -24,17 +24,21 @@ while map[goalY][goalX] == "#" {
             let ny = dy[i] + y
             let nx = dx[i] + x
             
-            guard ny >= 0 && nx >= 0 && ny < m && nx < n && visited[ny][nx] == 0 else { continue }
-            visited[ny][nx] = count
-            if map[ny][nx] != "0" {
-                map[ny][nx] = "0"
-                tempPositions.append(1000 * ny + nx)
-            } else {
-                bfsQueue.append(1000 * ny + nx)
+            if 0..<m ~= ny && 0..<n ~= nx && !visited[ny][nx] {
+                visited[ny][nx] = true
+                if map[ny][nx] == "1" {
+                    tempPositions.append(1000 * ny + nx)
+                    map[ny][nx] = "0"
+                } else if map[ny][nx] == "#" {
+                    break outerLoop
+                } else {
+                    bfsQueue.append(1000 * ny + nx)
+                }
             }
         }
     }
     bfsQueue = tempPositions
+    tempPositions = []
 }
 
-print(visited[goalY][goalX])
+print(count)
