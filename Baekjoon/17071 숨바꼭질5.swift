@@ -12,11 +12,12 @@ func bfs(_ x: Int) -> Int {
     
     while !queue.isEmpty {
         k += count
-        if k > max { return -1 }
-        if visited[count % 2][k] != 0 { return count }
+        if k >= max { return -1 }
+        
         let depth = queue.count
         for _ in 0 ..< depth {
             let x = queue.removeFirst()
+            
             for nx in [x+1, x-1, x*2] {
                 guard 0...max ~= nx && visited[count % 2][nx] == 0 else { continue }
                 visited[count % 2][nx] = visited[(count+1) % 2][x] + 1
