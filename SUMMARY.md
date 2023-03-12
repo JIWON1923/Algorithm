@@ -4,7 +4,7 @@
 * [알고리즘 개념](undefined/README.md)
   * [수학 공식](undefined/undefined.md)
   * [그래프 탐색](undefined/undefined-1.md)
-* [Beakjoon](baekjoon/README.md)
+* [Beakjoon](Baekjoon/README.md)
   * [그래프 탐색](baekjoon/undefined/README.md)
     * [🥈 Silver](baekjoon/undefined/silver.md)
 * [Programmers](Programmers/README.md)
