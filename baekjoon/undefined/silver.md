@@ -152,3 +152,76 @@ func bfs(_ y: Int, _ x: Int, _ goalY: Int, _ goalX: Int, _ l: Int) -> Int {
     return 0 // 무조건 목표지점에 도달할 수 있기 때문에 이 코드는 실행되지 않는다.
 }
 ```
+
+
+
+## 11403 경로 찾기
+
+문제로 이동
+
+#### 문제 요약
+
+가중치 없는 그래프 G에서, 노드 i에서 j로 가는 경로가 있는지, 없는지 인접 행렬로 표현해야하는 문제이다.
+
+#### 알고리즘
+
+1. 인접행렬을 입력받아 인접 리스트로 만든다.
+2. BFS를 이용하여 탐색하고, 인접 행렬 형태로 표현하여 출력한다.
+
+#### 접근방법
+
+* 인접 리스트를 사용하면 단방향 간선을 표현하기 더 좋다
+* 인접리스트로 그래프를 만들어서 방향이 있는 그래프를 표현하고, BFS로 어디를 방문할 수 있는지 계산해보아야한다.
+* 이때, 기존 BFS처럼 자기 자신을 방문처리하면 안 된다. (내 자신을 방문할 수 있다는 것을 보장할 수 없기 때문이다.)
+* Dictionary 초기화 꿀팁!
+  * 딕셔너리의 value가 리스트일 때, 만약 key가 처음 나오는 경우는 대입연산자를 사용해아하고, 이미 key가 존재하면 value에 append 연산을 수행해야한다.
+  * 이때 초깃값으로 딕셔너리 key 값에 빈 배열로 모두 초기화해주면 위 연산 없이 항상 append로 처리할 수 있다!
+
+#### 코드
+
+<pre class="language-swift"><code class="lang-swift"><strong>let n = Int(readLine()!)!
+</strong>var map = [[Int]]()
+var tree = [Int : [Int]]()
+Array(0..&#x3C;n).forEach { tree[$0] = [] } // dictionary 초기화
+
+// 인접행렬을 받아 인접리스트 tree에 저장한다.
+for y in 0 ..&#x3C; n {
+    let input = readLine()!.split { $0 == " " }.map { Int($0)! }
+    for x in 0 ..&#x3C; n {
+        if input[x] == 1 {
+            tree[y]!.append(Int(x))
+        }
+    }
+}
+
+// 모든 노드에 대해 BFS 연산을 수행한다.
+Array(0..&#x3C;n).forEach {
+    map.append(bfs($0))
+}
+
+// 출력 형태에 맞춰 출력한다.
+map.forEach {
+    $0.forEach { print($0, terminator: " " )}
+    print()
+}
+
+
+func bfs(_ node: Int) -> [Int] {
+    var result = [Int](repeating: 0, count: n) // 인접 리스트로 표현할 배열, visited와 같은 역할을 한다. 
+//    result[node] = 1 -> 자기 자신을 방문처리 하지 않는다.
+    
+    var queue = [node]
+    
+    while !queue.isEmpty {
+        let n = queue.removeFirst()
+        
+        guard let tree = tree[n] else { continue } // 딕셔너리[n] 이 자식을 가지고 있는가?
+        for i in tree {
+            guard result[i] == 0 else { continue } // 아직 방문하지 않았다면
+            result[i] = 1 // 인접리스트에 1로 표현한다.
+            queue.append(i)
+        }
+    }
+    return result // 인접리스트 한 행을 리턴한다.
+}
+</code></pre>
