@@ -157,7 +157,7 @@ func bfs(_ y: Int, _ x: Int, _ goalY: Int, _ goalX: Int, _ l: Int) -> Int {
 
 ## 11403 경로 찾기
 
-문제로 이동
+[문제로 이동](https://www.acmicpc.net/problem/11403)
 
 #### 문제 요약
 
@@ -225,3 +225,115 @@ func bfs(_ node: Int) -> [Int] {
     return result // 인접리스트 한 행을 리턴한다.
 }
 </code></pre>
+
+
+
+## 11725 트리의 부모 찾기
+
+[문제로 이동](https://www.acmicpc.net/problem/11725)
+
+#### 문제 요약
+
+루트 노드가 1인 트리에, 각 노드의 부모 노드 번호를 찾는 문제이다.
+
+#### 알고리즘
+
+1. 입력을 기반으로 인접 리스트로 만든다.
+2. 루트 노드(1번노드)부터 BFS를 탐색한다.
+3. 부모노드를 찾아 출력한다.
+4. Queue에서 pop 된 노드가 부모 노드이고, 이 노드에서 방문가능한 노드들이 자식 노드가된다.&#x20;
+
+주어진 입력을 기반으로 인접 리스트로 만들고, BFS를 이용하여 부모 노드를 출려한다.
+
+#### 접근방법
+
+<details>
+
+<summary>처음 접근했던 방법 (틀렸습니다)</summary>
+
+처음에는 굳이 그래프 탐색을 하지 않고 문제를 풀 수 있다고 생각했다.
+
+result라는 배열에 1만 1로 저장하고, 나머지 노드들에 0을 저장한다. (루트노드가 1이므로)
+
+이후 입력받는 숫자 a, b에 대해서 result\[a] > result\[b] 라면, a가 b의 노드라고 생각할 수 있다. (예제에서는 제대로 출력된다.)
+
+
+
+하지만 조금 더 생각하면 완전히 틀린 코드라는 것을 알 수 있다.
+
+예시 코드의 경우 부모노드가 무조건 존재하는 상황밖에 없다. 하지만 다음과 입력을 생각해보자
+
+<pre><code><strong>3
+</strong>2 3
+1 2
+</code></pre>
+
+이 경우는 2와 3을 봤을 때 result\[2], result\[3] 모두 0이며, 다음 입력 1, 2을 본 후에 2가 부모노드라는 것을 알 수 있게 된다.
+
+즉, 입력받은 즉시 부모노드를 결정할 수 없음을 알 수 있다.
+
+
+
+#### 틀린 코드
+
+```swift
+let n = Int(readLine()!)!
+var visited = [Bool](repeating: false, count: n + 1)
+var result = [Int](repeating: 0, count: n + 1)
+result[1] = 1
+
+// result가 더 큰 것이 부모노드이다
+for _ in 1 ..< n {
+    let input = readLine()!.split { $0 == " " }.map { Int($0)! }
+    let (a, b) = result[input[0]] > result[input[1]] ? (input[0], input[1]) : (input[1], input[0])
+    result[b] = a
+}
+
+// 결과를 출력한다
+for index in 2...n {
+    print(result[index])
+}
+```
+
+</details>
+
+* 입력 받은 값을 기반으로 인접 리스트를 만든다. 이때, 양방향 간선으로 간주하여 작성해야한다. (어떤게 부모인지 모르기 때문에)
+* 이후 시작노드 1을 기반으로 그래프 탐색을 수행한다.
+* queue 연산을 기준으로 설명하자면
+  * pop 된 현재 노드 = 부모 노드
+  * 탐색하며, 아직 방문되지 않아서 다음 queue에 들어가는 노드들 = 자식노드
+* queue에 다음 탐색할 노드를 넣을 때, result 배열에 부모노드 값을 저장해주자.
+
+#### 코드
+
+```swift
+let n = Int(readLine()!)!
+var tree = [Int : [Int]]()
+Array(1...n).forEach { tree[$0] = [] }
+var result = [Int](repeating: 0, count: n + 1)
+
+// 인접리스트로 입력받는다
+for _ in 1 ..< n {
+    let input = readLine()!.split { $0 == " " }.map { Int($0)! }, (a, b) = (input[0], input[1])
+    tree[a]!.append(b)
+    tree[b]!.append(a)
+}
+
+// 시작노드 1을 기반으로 BFS 탐색을 수행한다.
+var queue = [1]
+while !queue.isEmpty {
+    let n = queue.removeFirst()
+    
+    guard let nodes = tree[n] else { continue }
+    
+    for i in nodes {
+        guard result[i] == 0 else { continue }
+        result[i] = n
+        queue.append(i)
+    }
+}
+
+for i in 2...n {
+    print(result[i])
+}
+```
