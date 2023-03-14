@@ -4,6 +4,68 @@ description: 그래프 탐색 Silver 단계 문제 풀이 모음
 
 # 🥈 Silver
 
+## 2644 촌수계산
+
+[문제로 이동](https://www.acmicpc.net/problem/2644)
+
+#### 문제 요약
+
+부모 자식 간 관계가 주어졌을 때, 두 사람 사이의 촌 수를 계산해야한다.
+
+#### 알고리즘
+
+1. 주어진 값을 각각 입력받는다.
+2. 가족 관계의 경우 인접 리스트로 구현받는다.
+3. BFS를 이용하여 두 사람 사이의 depth를 계산하여 출력한다.
+
+#### 접근 방법
+
+* 가족 관계는 단방향 간선이 아닌 양방향 간선으로 구현해야한다.
+  * 자식에서 부모로, 부모에서 자식으로 이동가능해야 모두의 촌수를 계산할 수 있기 때문이다.
+* BFS의 visited 배열을 Int로 선언하면, depth를 구할 수 있다.
+* 만약 끝까지 찾으려는 사람이 나오지 않는다면, -1를 리턴한다.
+
+#### 코드
+
+```swift
+let n = Int(readLine()!)!
+let input = readLine()!.split { $0 == " " }.map { Int($0)! }
+let m = Int(readLine()!)!
+var tree = [Int: [Int]]()
+var visited = [Int](repeating: 0, count: n+1)
+Array(1...n).forEach { tree[$0] = [] }
+
+// 가족 관계를 인접리스트로 입력받는다. (양방향 간선)
+for _ in 0 ..< m {
+    let input = readLine()!.split { $0 == " " }.map { Int($0)! }, (a, b) = (input[0], input[1])
+    tree[a]!.append(b)
+    tree[b]!.append(a)
+}
+
+// bfs를 통해 두 사람 사이 depth를 계산한다
+print(bfs(input[0], input[1]))
+
+func bfs(_ n: Int, _ find: Int) -> Int {
+    visited[n] = 1
+    var queue = [n]
+    
+    while !queue.isEmpty {
+        let n = queue.removeFirst()
+        guard let tree = tree[n] else { continue } // 연결된 노드가 없을 수 있다.
+        for next in tree {
+            guard visited[next] == 0 else { continue }
+            if next == find {
+                return visited[n] // 시작 노드의 visited가 1이므로, visited[next]-1과 같은 값인 visited[n]을 리턴한다
+            }
+            visited[next] = visited[n] + 1
+            queue.append(next)
+        }
+    }
+    return -1 // 연결된 가족 관계 중 찾으려는 사람이 없다면 -1을 리턴한다.
+}
+
+```
+
 ## 4963 섬의 개수
 
 [문제로 이동](https://www.acmicpc.net/problem/4963)
