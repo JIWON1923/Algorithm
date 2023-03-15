@@ -7,5 +7,7 @@
 * [Beakjoon](Baekjoon/README.md)
   * [그래프 탐색](baekjoon/undefined/README.md)
     * [🥈 Silver](baekjoon/undefined/silver.md)
+  * [완전탐색](baekjoon/undefined-1/README.md)
+    * [Bronze](baekjoon/undefined-1/bronze.md)
 * [Programmers](Programmers/README.md)
 * [이것이 코딩테스트다](undefined-1.md)
