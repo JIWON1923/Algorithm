@@ -2,7 +2,7 @@
 description: 완전탐색 Bronze 단계 문제 해설
 ---
 
-# Bronze
+# 🥉 Bronze
 
 ## 2231 분해합
 
@@ -50,3 +50,4 @@ while n != m {
 print(result)
 
 ```
+

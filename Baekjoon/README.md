@@ -14,3 +14,10 @@ description: 문제 정리
 | 11403 | [경로 찾기](../baekjoon/undefined/silver.md#11403)     | <img src="../.gitbook/assets/10.svg" alt="" data-size="line"> |
 | 11725 | [트리의 부모 찾기](../baekjoon/undefined/silver.md#11725) | <img src="../.gitbook/assets/9.svg" alt="" data-size="line">  |
 
+## 완전탐색
+
+| 번호   | 제목         | 난이도                                                              |
+| ---- | ---------- | ---------------------------------------------------------------- |
+| 1018 | 체스판 다시 칠하기 | <img src="../.gitbook/assets/7 (2).svg" alt="" data-size="line"> |
+| 2231 | 분해합        | <img src="../.gitbook/assets/4.svg" alt="" data-size="line">     |
+|      |            |                                                                  |
