@@ -6,6 +6,7 @@
   * [그래프 탐색](undefined/undefined-1.md)
 * [Beakjoon](Baekjoon/README.md)
   * [그래프 탐색](baekjoon/undefined/README.md)
+    * [🥇 Gold](baekjoon/undefined/gold.md)
     * [🥈 Silver](baekjoon/undefined/silver.md)
   * [완전탐색](baekjoon/undefined-1/README.md)
     * [🥉 Bronze](baekjoon/undefined-1/bronze.md)
