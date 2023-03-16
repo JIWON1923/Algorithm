@@ -16,8 +16,8 @@ description: 문제 정리
 
 ## 완전탐색
 
-| 번호   | 제목         | 난이도                                                              |
-| ---- | ---------- | ---------------------------------------------------------------- |
-| 1018 | 체스판 다시 칠하기 | <img src="../.gitbook/assets/7 (2).svg" alt="" data-size="line"> |
-| 2231 | 분해합        | <img src="../.gitbook/assets/4.svg" alt="" data-size="line">     |
-|      |            |                                                                  |
+| 번호    | 제목                                                   | 난이도                                                              |
+| ----- | ---------------------------------------------------- | ---------------------------------------------------------------- |
+| 1018  | [체스판 다시 칠하기](../baekjoon/undefined-1/silver.md#1018) | <img src="../.gitbook/assets/7 (1).svg" alt="" data-size="line"> |
+| 2231  | [분해합](../baekjoon/undefined-1/bronze.md#2231)        | <img src="../.gitbook/assets/4.svg" alt="" data-size="line">     |
+| 10448 | [유레카 이론](../baekjoon/undefined-1/bronze.md#10448)    | <img src="../.gitbook/assets/5.svg" alt="" data-size="line">     |
