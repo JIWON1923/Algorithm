@@ -77,6 +77,54 @@ for h in 0 ... n - 8 {
 print(result)
 ```
 
+## 1065 한수
+
+[문제로 이동](https://www.acmicpc.net/problem/1065)
+
+#### 문제 요약
+
+정수 n에 대하여, 각 자리수가 등차수열을 이룬다면, 한수라고 말한다. 1000 이하의 정수 n이 주어졌을 때, N이하의 자연수 중 한수의 개수를 구하는 프로그램을 작성해라.
+
+#### 알고리즘
+
+1. N이 2자리수라면, n을 출력한다. (2자리수는 무조건 등차수열이다)
+2. 100부터는 각 자리수가 등차수열을 이루는지 확인 후 count에 추가한다.
+
+#### 접근방법
+
+* 다른 사람의 코드를 참고하여 작성했다. ( 두 자리 수가 무조건 등차수열이라는 것을 인식하지 못했다 ㅠ)
+
+#### 코드
+
+```swift
+let n = Int(readLine()!)!
+print(getHansu(n))
+
+func getHansu(_ n: Int) -> Int {
+    // 2자리수는 무조건 등차수열이다.
+    var count = min(99, n)
+    
+    if n > 99 {
+        for i in 100...n {
+            // 한수의 개수를 센다.
+            count += isHansu(String(i).map { $0 }) ? 1 : 0
+        }
+    }
+    return count
+}
+
+func isHansu(_ n: [Character]) -> Bool {
+    let d = Int(String(n[0]))! - Int(String(n[1]))!
+    // 다음 원소와 비교했을 때, 등차수열을 이루지 않는다면 false를 리턴한다.
+    for i in 1 ..< n.count-1 {
+        guard Int(String(n[i]))! - Int(String(n[i+1]))! == d else { return false }
+    }
+    
+    // 모든 원소가 등차수열을 이루었을 때 true를 리턴한다.
+    return true
+}
+```
+
 ## 4673 셀프 넘버
 
 [문제로 이동](https://www.acmicpc.net/problem/4673)
