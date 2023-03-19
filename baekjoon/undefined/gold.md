@@ -4,6 +4,106 @@ description: 그래프탐색 골드 문제
 
 # 🥇 Gold
 
+## 1707 이분 그래프
+
+[문제로 이동](https://www.acmicpc.net/problem/1707)
+
+#### 문제 요약
+
+그래프의 정점 집합을 두개로 분할하여, 각 집합에 속한 정점끼리는 서로 인접하지 않도록 분할할 수 있을 때, 이분 그래프라고 부른다. 그래프가 주어졌으 ㄹ때, 이분그래프인지 판별하는 프로그램을 작성해야한다.
+
+#### 알고리즘
+
+1. 정보를 입력받고, 테스트케이스만큼 반복한다.
+2. 그래프를 무방향 그래프로 입력받는다. (양방향 간선)
+3. 전체 노드에 대해 bfs를 탐색하며 이분 그래프인지 판별한다.
+4. 결과를 출력한다.
+
+#### 접근방법
+
+* 우선 나는 문제를 보고 이분 그래프의 정확한 정의를 알지 못했다. (그래프에 사이클이 있는가를 확인하는 문제가 아니라는 것이다)
+  * 위키에 이분 그래프의 정의를 보면 다음과 같이 나와있다.
+  * "모든 꼭짓점을 빨강, 파랑으로 색칠하되, 모든 변이 빨강과 파랑 꼭짓점을 포함하도록 색칠할 수 있다."
+  * 즉, ㅇ-ㅇ 라는 두 개의 노드를 연결하는 간선의 입장에서 한 쪽은 빨간색, 다른 한 쪽은 파란색으로 칠할 수 있어야한다는 것이다.
+  * 코드 관점으로 생각해보자면 visited\[here]과 visited\[next]의 값이 달라야함을 알 수 있다.
+* 주의해야할 점은 하나의 그래프로 주어지지 않을 수 있다는 것이다.
+  * 즉, 전체 노드를 방문했는지 확인하는 작업이 필요하다.
+  * 나는 현재 tree의 key를 기반으로 탐색하고 있다. 그래서 테스트케이스에서 반드시 트리를 빈 딕셔너리로 한 번 초기화해주는 작업이 필요하다. (또는 v를 따로 저장해서 bfs를 수행해도 괜찮다)
+* visited를 -1로 초기화한 이유
+  * 나는 원래 visited\[0]으로 방문하지 않았음을 표기했다.
+  * 이전과는 다르게 visited 배열에 3가지 정보를 저장해야한다. (아직 방문 안 함, 빨간색, 파란색)
+  * 나는 이것을 -1, 0, 1로 표기해서 모듈러 2를 통해 here과 next를 쉽게 표기하고자 한 것이다!
+
+#### 코드
+
+```swift
+let testCase = Int(readLine()!)!
+var tree = [Int: [Int]]()
+var visited = [Int]()
+
+for _ in 0 ..< testCase {
+    var flag = true
+    getInformation()
+    for node in tree.keys {
+        if node == 0 { continue }
+        if visited[node] == -1 {
+            guard bfs(node) else {
+                print("NO")
+                flag = false
+                break
+            }
+        }
+    }
+    if flag { print("YES") }
+}
+
+// 문제에서 주어지는 정보를 입력받음
+func getInformation() {
+    
+    let input = readLine()!.split { $0 == " " }.map { Int($0)! }
+    let (v, e) = (input[0], input[1])
+    
+    tree = [Int: [Int]]() // 이거 없으면 런타임 에러. (이전 키 값이 트리에 저장되어 있음)
+    Array(0...v).forEach { tree[$0] = [] } // dictionary 초기화
+    
+    for _ in 0 ..< e {
+        let input = readLine()!.split { $0 == " " }.map { Int($0)! }
+        let (u, v) = (input[0], input[1])
+        tree[u]!.append(v)
+        tree[v]!.append(u)
+    }
+    
+    visited = [Int](repeating: -1, count: v + 1)
+}
+
+func bfs(_ n: Int) -> Bool {
+    var queue = [n]
+    visited[n] = 0
+    var index = 0
+    
+    while queue.count > index {
+        let here = queue[index]
+        index += 1
+        guard let child = tree[here] else { continue }
+        for next in child {
+        
+            // visited[here]과 visited[next]가 같다면 이분그래프가 아님
+            // here는 방문처리가 되어있으므로 -1과 같을 수 없음
+            guard visited[here] != visited[next] else { return false }
+            
+            // 현재 상황은 here과 next의 visited 값이 다른 상황임.
+            // 즉, next는 here과 색상이 다르거나, 아직 방문하지 않은 상황
+            // 아직 방문하지 않은 경우만 queue에 삽입한다.
+            guard visited[next] == -1 else { continue }
+            visited[next] = (visited[here] + 1) % 2
+            queue.append(next)
+        }
+    }
+    // ㅇ-ㅇ에서 한 번도 같은 색을 칠한 적 없다면 true를 반환한다.
+    return true
+}
+```
+
 ## 2206 벽 부수고 이동하기
 
 [문제로 이동](https://www.acmicpc.net/problem/2206)
