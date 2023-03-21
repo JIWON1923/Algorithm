@@ -4,6 +4,8 @@ description: 그래프탐색 골드 문제
 
 # 🥇 Gold
 
+##
+
 ## 1707 이분 그래프
 
 [문제로 이동](https://www.acmicpc.net/problem/1707)
@@ -255,5 +257,309 @@ func bfs(_ y: Int, _ x: Int) -> Int {
 ```
 
 
+
+</details>
+
+
+
+## 16236 아기상어
+
+[문제로 이동](https://www.acmicpc.net/problem/16236)
+
+#### 문제 요약
+
+&#x20;N\*N 공간에 물고기 M마리와 아기 상어 1마리가 있다. 아기상어는 상, 하, 좌, 우로 움직일 수 있다. 이때, 자기보다 몸집이 큰 물고기는 지나갈 수 없고, 몸집이 같은 물고기는 지나갈 수 있다. 물고기가 자기보다 몸집이 작다면, 먹을 수 있는데 자기 크기 만큼 물고기를 먹으면 1만큼 아기 상어의 몸집이 커진다. 이때, 상어가 몇 초 동안 엄마에게 도움을 요청하지 않고 물고기를 잡아먹을 수 있는지 계산해라.
+
+* 아기상어는 더 이상 먹을 수 있는 물고기가 공간에 없다면, 엄마상어에게 도움을 요청한다.
+* 먹을 수 있는 물고기가 1마리라면, 그 물고기를 먹으러 간다.
+* 먹을 수 있는 물고기가 1마리보다 많다면, 거리가 가장 가까운 물고기를 먹으러 간다.
+  * 거리는 아기 상어가 지나가야하는 칸의 최소 개수이다.
+  * 거리가 가까운 물고기가 많다면, 가장 위에 있는 물고기, 그러한 물고기가 많다면 가장 왼쪽에 있는 물고기를 먹는다.
+
+#### 알고리즘
+
+1. n을 입력받는다.
+2. 지도 정보를 입력받는다.
+   1. 입력 값에 9가 있다면 상어의 위치를 저장하고, 해당 map을 0으로 초기화한다.
+   2. 입력 값이 물고기라면, 물고기 집합에 정보를 추가한다.
+3. bfs가 0을 리턴할 때까지 bfs를 수행한다.
+   1. 물고기 집합이 비어있다면 0을 리턴한다. **(종료조건 1)**
+   2. flood fill 알고리즘을 수행하여 depth 별로 너비 우선 탐색을 수행한다.
+   3. 다음 위치가 물고기라면 임시 물고기 배열에 저장하고, 아니라면 계속 탐색을 수행한다.
+   4. 같은 depth의 탐색이 끝나면 임시 물고기 배열에 물고기가 있는지 확인한다. (없다면 계속 bfs 수행)
+   5. 만약 임시 물고기 배열에 물고기가 있다면 조건에 맞는 물고기를 먹으러 가야한다.
+      1. 임시 물고기 배열을 정렬한다. (좌상단 물고기 찾기)
+      2. 전역에 있는 물고기 집합에서 먹을 물고기를 제외한다.
+      3. 이제 물고기가 없으므로 해당 위치를 0으로 초기화한다.
+      4. 먹은 물고기를 +1 해준다. (상어 커지는 조건)
+   6. map을 모두 조회했다면 0을 리턴한다. **(종료조건 2)**
+
+#### 접근 방법
+
+* 고민해야하는 부분
+  * dy, dx의 방향만으로 조건을 성립할 수 없다! -> **flood fill 사용** (매우 중요)
+    * 무조건 같은 depth에서 먹을 수 있는 물고기를 확인한 후 정렬을 수행해줘야한다. ([백준질문](https://www.acmicpc.net/board/view/30275))
+  * 물고기를 먹을 수 없는 상황
+    * 남은 물고기들이 전부 다 크기가 상어보다 크거나 같은 경우
+    * 나보다 작은 물고기가 있지만, 큰 물고기들이 막고 있어서 먹지 못하는 경우
+      * 이 경우가 굉장히 중요하다.
+      * return은 물고기를 먹은 상황에서만 해줘야된다. (이동한 후에 물고기를 먹지 못한 상황에서 depth를 리턴시키면 틀린 답이 나온다)
+* 상어 크기 정의 방법
+  * Swift의 didSet을 사용하면 깔끔하게 쓸 수 있다!
+
+#### 코드
+
+<pre class="language-swift"><code class="lang-swift"><strong>// 물고기 자료형
+</strong><strong>struct Fish: Hashable {
+</strong>    let y: Int
+    let x: Int
+    var size: Int
+}
+
+let n = Int(readLine()!)!
+var map = [[Int]]()
+var sharkX = 0, sharkY = 0
+var fishes = Set([Fish]())
+var sharkSize = 2
+var ateFish = 0 { // 상어 크기 정의
+    didSet {
+        if ateFish == sharkSize {
+            sharkSize += 1
+            ateFish = 0
+        }
+    }
+}
+
+// 주어진 정보를 입력받는다.
+// 상어의 경우, 위치만 저장하고, map에는 0을 저장해준다.
+// 물고기의 경우 집합에 넣어주자.
+for y in 0 ..&#x3C; n {
+    var input = readLine()!.split { $0 == " " }.map { Int($0)! }
+    for x in 0 ..&#x3C; n {
+        let size = input[x]
+        switch size {
+        case 0: break
+        case 9:
+            (sharkY, sharkX) = (y, x)
+            input[x] = 0
+        default: fishes.insert(Fish(y: y, x: x, size: size))
+        }
+    }
+    map.append(input)
+}
+
+var result = 0
+while true {
+    let count = bfs(sharkY, sharkX)
+    result += count
+    if count == 0 {
+        print(result)
+        break
+    }
+}
+
+func bfs(_ y: Int, _ x: Int) -> Int {
+    let dy = [-1, 0, 1, 0]
+    let dx = [0, 1, 0, -1]        
+    var visited = [[Bool]](repeating: [Bool](repeating: false, count: n), count: n)
+    visited[y][x] = true
+    var queue = [(y, x)]
+    var count = 0 // 이동 거리
+    var fish = [Fish]() // 현재 depth에서 먹을 수 있는 물고기 집합
+    
+    if fishes.isEmpty { return 0 } // 먹을 수 있는 물고기가 없다면 0을 리턴 (종료조건1)
+    
+    while !queue.isEmpty {
+        count += 1
+        let depth = queue.count // flood fill
+        for _ in 0 ..&#x3C; depth {
+            let (y, x) = queue.removeFirst()
+            
+            for i in 0 ..&#x3C; 4 {
+                let ny = dy[i] + y
+                let nx = dx[i] + x
+                
+                guard 0 ..&#x3C; n ~= ny &#x26;&#x26; 0 ..&#x3C; n ~= nx else { continue }
+                guard !visited[ny][nx] &#x26;&#x26; map[ny][nx] &#x3C;= sharkSize else { continue }
+                visited[ny][nx] = true
+                
+                let next = map[ny][nx]
+                if [0, sharkSize].contains(next) { // 이동하는 경우
+                    queue.append((ny, nx))
+                } else {                            // 물고기를 먹을 수 있는 경우
+                    fish.append(Fish(y: ny, x: nx, size: next))
+                }
+            }
+        }
+        
+        // 이번 depth에서 물고기를 먹을 수 있다면
+        if !fish.isEmpty {
+            // 조건에 맞는 물고기를 찾는다.
+            fish = fish.sorted { $0.x &#x3C; $1.x }.sorted { $0.y &#x3C; $1.y }
+            let shark = fish[0]
+            
+            // 물고기 배열에서 해당 물고기를 지운다.
+            fishes.remove(shark)
+            
+            // 상어의 위치를 업데이트한다.
+            (sharkY, sharkX) = (shark.y, shark.x)
+            
+            // 지도에 0으로 저장한다.
+            map[sharkY][sharkX] = 0
+            
+            // 물고기 수를 추가한다.
+            ateFish += 1
+            
+            // 이제까지 이동한 거리를 리턴한다.
+            return count
+        }
+    }
+    // 모든 지도를 탐색했음에도 물고기를 먹지 못했다(종료조건2)
+    return 0
+}
+
+</code></pre>
+
+<details>
+
+<summary>잘못된 접근 1 - 크기가 큰 물고기도 지나갈 수 있다고 생각했다 (문제를 잘 읽자)</summary>
+
+문제를 잘 읽어야하는 이유다.
+
+상어보다 몸집이 큰 경우도 움직일 수 있다고 생각해서 단순 distance를 구해서 문제를 풀었었다...
+
+```swift
+// 물고기 구조체
+struct Fish: Hashable {
+    var y: Int
+    var x: Int
+    var size: Int
+    
+    init(_ y: Int, _ x: Int, _ size: Int) {
+        self.y = y
+        self.x = x
+        self.size = size
+    }
+}
+
+let dy = [-1, 0, 1, 0]
+let dx = [0, 1, 0, -1]
+
+let n = Int(readLine()!)!
+var fishes = Set([Fish]())
+var shark = Fish(0, 0, 0)
+var (count, result) = (0, 0)
+
+// 물고기 정보 입력받기
+for y in 0 ..< n {
+    let input = readLine()!.split { $0 == " " }.map { Int(String($0))! }
+    for x in 0 ..< n {
+        if input[x] == 9 {
+            shark = Fish(y, x, 2)
+        } else if input[x] != 0 {
+            fishes.insert(Fish(y, x, input[x]))
+        }
+    }
+}
+
+while true {
+    if count == shark.size {
+        count = 0
+        shark.size += 1
+    }
+    // 조건에 따라 정렬
+    var foodFish = Array(fishes).filter { $0.size < shark.size }
+        .sorted { $0.x < $1.x }
+        .sorted { $0.y < $1.y }
+        .sorted {
+            calculateDistance($0, shark) < calculateDistance($1, shark)
+        }
+    guard !foodFish.isEmpty else { break }
+    let nextFish = foodFish.removeFirst()
+    fishes.remove(nextFish)
+    count += 1
+    
+    result += calculateDistance(shark, nextFish)
+    (shark.y, shark.x) = (nextFish.y, nextFish.x)   
+}
+print(result)
+
+// 두 물고기 사이의 거리 계산
+func calculateDistance(_ shark: Fish, _ fish: Fish) -> Int {
+    abs(shark.x - fish.x) + abs(shark.y + fish.y)
+}
+```
+
+</details>
+
+<details>
+
+<summary>잘못된 접근2 - 단순 bfs로 풀 수 없는 이유</summary>
+
+이거 돌려보면 아마 예제 4번에서 56이 나올 것이다.. (엄청난 삽질)
+
+```swift
+// 상좌우하로 탐색
+let dy = [-1, 0, 0, 1]
+let dx = [0, -1, 1, 0]
+
+let n = Int(readLine()!)!
+let initialVisited = [[Int]](repeating: [Int](repeating: 0, count: n), count: n)
+var visited = initialVisited
+var map = [[Int]]()
+var shark = (0, 0)
+var sharkSize = 2
+var result = 0
+var ateFish = 0 {
+    didSet {
+        if ateFish == sharkSize {
+            ateFish = 0
+            sharkSize += 1
+        }
+    }
+}
+
+for y in 0 ..< n {
+    let input = readLine()!.split { $0 == " " }.map { Int($0)! }
+    for x in 0 ..< n {
+        if input[x] == 9 {
+            shark = (y, x)
+        }
+    }
+    map.append(input)
+}
+map[shark.0][shark.1] = 0
+bfs()
+print(result)
+
+func bfs() {
+    var queue = [shark]
+    visited[shark.0][shark.1] = 1
+    
+    while !queue.isEmpty {
+        
+        let (y, x) = queue.removeFirst()
+        for i in 0 ..< 4 {
+            let ny = y + dy[i]
+            let nx = x + dx[i]
+            
+            guard 0 ..< n ~= ny && 0 ..< n ~= nx else { continue }
+            guard visited[ny][nx] == 0 && map[ny][nx] <= sharkSize else { continue }
+            visited[ny][nx] = visited[y][x] + 1
+            queue.append((ny, nx))
+            if map[ny][nx] != 0 && map[ny][nx] < sharkSize {
+                ateFish += 1
+                result += visited[y][x]
+                queue = [(ny, nx)]
+                visited = initialVisited
+                visited[ny][nx] = 1
+                map[ny][nx] = 0
+                print(ny, nx, result, sharkSize)
+                break
+            }
+        }
+    }
+}
+```
 
 </details>

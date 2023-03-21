@@ -15,6 +15,7 @@ description: 문제 정리
 | 7562  | [나이트의 이동](../baekjoon/undefined/silver.md#7562)    | <img src="../.gitbook/assets/10.svg" alt="" data-size="line"> |
 | 11403 | [경로 찾기](../baekjoon/undefined/silver.md#11403)     | <img src="../.gitbook/assets/10.svg" alt="" data-size="line"> |
 | 11725 | [트리의 부모 찾기](../baekjoon/undefined/silver.md#11725) | <img src="../.gitbook/assets/9.svg" alt="" data-size="line">  |
+| 16236 | [아기 상어](../baekjoon/undefined/gold.md#16236)       | <img src="../.gitbook/assets/13.svg" alt="" data-size="line"> |
 
 ## 완전탐색
 
