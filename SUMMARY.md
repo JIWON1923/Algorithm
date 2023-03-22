@@ -2,6 +2,7 @@
 
 * [README](README.md)
 * [알고리즘 개념](undefined/README.md)
+  * [Dynamic Programming](undefined/dynamic-programming.md)
   * [수학 공식](undefined/undefined.md)
   * [그래프 탐색](undefined/undefined-1.md)
 * [Beakjoon](Baekjoon/README.md)
