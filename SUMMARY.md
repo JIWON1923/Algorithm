@@ -12,6 +12,8 @@
   * [완전탐색](baekjoon/undefined-1/README.md)
     * [🥉 Bronze](baekjoon/undefined-1/bronze.md)
     * [🥈 Silver](baekjoon/undefined-1/silver.md)
+  * [Dynamic Programming](baekjoon/dynamic-programming/README.md)
+    * [🥈 Silver](baekjoon/dynamic-programming/silver.md)
   * [단계별로 풀기](baekjoon/undefined-2/README.md)
     * [1. 입출력과 사칙연산](baekjoon/undefined-2/1..md)
 * [Programmers](Programmers/README.md)

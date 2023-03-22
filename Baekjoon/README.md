@@ -26,3 +26,11 @@ description: 문제 정리
 | 2231  | [분해합](../baekjoon/undefined-1/bronze.md#2231)        | <img src="../.gitbook/assets/4.svg" alt="" data-size="line">     |
 | 4673  | [셀프 넘버](../baekjoon/undefined-1/silver.md#4673)      | <img src="../.gitbook/assets/6.svg" alt="" data-size="line">     |
 | 10448 | [유레카 이론](../baekjoon/undefined-1/bronze.md#10448)    | <img src="../.gitbook/assets/5.svg" alt="" data-size="line">     |
+
+## Dynamic Programming
+
+| 번호   | 제목                                                      | 난이도                                                              |
+| ---- | ------------------------------------------------------- | ---------------------------------------------------------------- |
+| 2386 | [설탕 배달](../baekjoon/dynamic-programming/silver.md#2839) | <img src="../.gitbook/assets/7 (1).svg" alt="" data-size="line"> |
+|      |                                                         |                                                                  |
+|      |                                                         |                                                                  |
