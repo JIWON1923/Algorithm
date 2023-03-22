@@ -29,8 +29,9 @@ description: 문제 정리
 
 ## Dynamic Programming
 
-| 번호   | 제목                                                      | 난이도                                                              |
-| ---- | ------------------------------------------------------- | ---------------------------------------------------------------- |
-| 2839 | [설탕 배달](../baekjoon/dynamic-programming/silver.md#2839) | <img src="../.gitbook/assets/7 (1).svg" alt="" data-size="line"> |
-|      |                                                         |                                                                  |
-|      |                                                         |                                                                  |
+| 번호   | 제목                                                         | 난이도                                                              |
+| ---- | ---------------------------------------------------------- | ---------------------------------------------------------------- |
+| 2839 | [설탕 배달](../baekjoon/dynamic-programming/silver.md#2839)    | <img src="../.gitbook/assets/7 (1).svg" alt="" data-size="line"> |
+| 1463 | [1로 만들기](../baekjoon/dynamic-programming/silver.md#1463-1) | <img src="../.gitbook/assets/8.svg" alt="" data-size="line">     |
+|      |                                                            |                                                                  |
+
