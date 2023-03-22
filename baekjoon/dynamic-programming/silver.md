@@ -68,3 +68,22 @@ func getSugar(_ n: Int) -> Int {
     return sugarDP[n]
 }
 </code></pre>
+
+<details>
+
+<summary>그리디 접근 방식 (틀린 방법)</summary>
+
+```swift
+var sugar = Int(readLine()!)!
+var result = 0
+
+for x in [3, 5] {
+    if sugar >= x {
+        result += sugar / x
+        sugar %= x
+    }
+}
+print( sugar == 0 ? result : -1)
+```
+
+</details>
