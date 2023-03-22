@@ -31,6 +31,6 @@ description: 문제 정리
 
 | 번호   | 제목                                                      | 난이도                                                              |
 | ---- | ------------------------------------------------------- | ---------------------------------------------------------------- |
-| 2386 | [설탕 배달](../baekjoon/dynamic-programming/silver.md#2839) | <img src="../.gitbook/assets/7 (1).svg" alt="" data-size="line"> |
+| 2839 | [설탕 배달](../baekjoon/dynamic-programming/silver.md#2839) | <img src="../.gitbook/assets/7 (1).svg" alt="" data-size="line"> |
 |      |                                                         |                                                                  |
 |      |                                                         |                                                                  |

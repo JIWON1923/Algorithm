@@ -54,7 +54,7 @@ func getSugar(_ n: Int) -> Int {
         let prev2 = sugarDP[i-5]
         
         // -1은 유효하지 않은 값이므로 제거 후 정렬한다.
-        var temp = [prev1, prev2].filter { $0 != -1 }.sorted()
+        let temp = [prev1, prev2].filter { $0 != -1 }.sorted()
         
         // prev1과 prev2가 모두 -1이었다면, -1을 추가한다.
         guard !temp.isEmpty else {
