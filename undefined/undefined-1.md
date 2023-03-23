@@ -391,3 +391,60 @@ func dfs(u: Int) {
         inOrder(v: graph[v]?[1])
     }
     ```
+
+## 다익스트라 알고리즘
+
+### 개념
+
+* 여러개의 노드가 있을 때, 특정 노드에서 출발하여 다른 노드로 가는 각각의 최단 경로를 구하는 알고리즘이다.
+* 음의 간선이 없을 때 정상적으로 동작한다. (0보다 작은 값을 가질 수 없다)
+  * 현실 세계에서는 음의 간선으로 표현되지 않으므로 GPS 기본 알고리즘으로 채택되기도 한다.
+
+### 알고리
+
+1. 출발 노드를 설정한다.
+2. 최단 거리 테이블을 초기화한다.
+3. 방문하지 않은 노드 중 최단 거리가 가장 짧은 노드를 선택한다. (최소힙 사용)
+4. 최단 거리 테이블을 갱신한다.
+
+### 코드
+
+[최소힙 코드](https://sois-organization.gitbook.io/today-i-learned/undefined/heap)
+
+```swift
+func dijkstra(_ start: Int) {
+    // 최소 힙을 사용한다.
+    var queue = Heap<Node>()
+    
+    // 방문 노드를 설정한다. - 최단 거리가 갱신된 경우 방문 처리한다.
+    var visited = [Bool](repeating: false, count: v + 1)
+    
+    // Start -> start로 가는 경로는 0이다.
+    result[start] = 0
+    
+    queue.push((Node(start, 0)))
+    
+    // pop은 nil을 리턴할 수 있도록 설계 되었다. 
+    while let current = queue.pop() {
+        let (node, cost) = (current.node, current.cost)
+        guard !visited[node] else { continue }
+        visited[node] = true
+        
+        if let edge = graph[node] {
+            for next in edge {
+                let (nextNode, nextCost) = (next.node, next.cost)
+                
+                guard !visited[nextNode] else { continue }
+                
+                // 기존 비용보다 더 짧은 비용으로 이동가능하다면, 최단 거리 테이블을 갱신한다.
+                let newCost = cost + nextCost
+                if newCost < result[nextNode] {
+                    result[nextNode] = newCost
+                    queue.push(Node(nextNode, newCost))
+                }
+            }
+        }
+    }
+}
+
+```
