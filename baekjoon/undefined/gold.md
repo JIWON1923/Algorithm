@@ -2,9 +2,7 @@
 description: 그래프탐색 골드 문제
 ---
 
-# 🥇 Gold
-
-##
+# 🥇 \[그래프] Gold
 
 ## 1707 이분 그래프
 
@@ -103,6 +101,142 @@ func bfs(_ n: Int) -> Bool {
     }
     // ㅇ-ㅇ에서 한 번도 같은 색을 칠한 적 없다면 true를 반환한다.
     return true
+}
+```
+
+## 1753 최단 경로
+
+[문제로 이동](https://www.acmicpc.net/problem/1753)
+
+#### 문제 요약
+
+방향 그래프가 주어졌을 때, 시작 점에서 다른 모든 정점으로의 최단 경로를 구하는 프로그램을 작성해야한다.
+
+#### 알고리즘
+
+1. 주어진 그래프를 딕셔너리 형태로 입력받는다.
+2. [Min Heap 자료구조](https://sois-organization.gitbook.io/today-i-learned/undefined/heap)를 만든다. (Swift는 heap 자료구조를 제공하지 않는다.)
+3. 다익스트라 알고리즘을 수행한다.
+
+#### 접근 방법
+
+* 한 정점에서 다른 모든 정점의 최단 경로를 구하는 방법은 다익스트라 알고리즘을 사용해야한다.
+* 이에 최소 힙을 제작하여 다익스트라 알고리즘을 구현해야한다.
+
+#### 코드
+
+```swift
+// 최소 힙 구현
+struct Heap <T: Comparable> {
+    var heap = [T]()
+    
+    private func getParent(_ index: Int) -> T {
+        heap[index / 2]
+    }
+    
+    private func getLeftChild(_ index: Int) -> T {
+        heap[index * 2]
+    }
+    
+    private func getRightChild(_ index: Int) -> T {
+        heap[index * 2 + 1]
+    }
+    
+    func isEmpty() -> Bool {
+        heap.count <= 1
+    }
+    
+    mutating func push(_ data: T) {
+        if isEmpty() { heap.append(data) }
+        var index = heap.count
+        heap.append(data)
+        
+        while index > 1 {
+            let parent = getParent(index)
+            guard parent > data else { break }
+            heap[index] = parent
+            index /= 2
+        }
+        heap[index] = data
+    }
+    
+    mutating func pop() -> T? {
+        guard !isEmpty() else { return nil }
+        let item = heap[1]
+        let data = heap.removeLast()
+        let size = heap.count - 1
+        
+        guard !isEmpty() else { return item }
+        var (parent, child) = (1, 2)
+        while child <= size {
+            if child < size && getLeftChild(parent) > getRightChild(parent) {
+                child += 1
+            }
+            guard data > heap[child] else { break }
+            heap[parent] = heap[child]
+            parent = child
+            child *= 2
+        }
+        heap[parent] = data
+        return item
+    }
+}
+
+struct Node: Comparable {
+    static func < (lhs: Node, rhs: Node) -> Bool {
+        lhs.cost < rhs.cost
+    }
+    
+    init(_ node: Int, _ cost: Int) {
+        self.node = node
+        self.cost = cost
+    }
+    
+    let node: Int
+    let cost: Int
+}
+
+let input = readLine()!.split { $0 == " " }.map { Int($0)! }, (v, e) = (input[0], input[1])
+let start = Int(readLine()!)!
+var graph = [Int: [Node]]()
+var result = [Int](repeating: Int.max, count: v+1)
+for i in 1...v {
+    graph[i] = []
+}
+
+for _ in 0 ..< e {
+    let input = readLine()!.split { $0 == " " }.map { Int($0)! }
+    let (start, end, cost) = (input[0], input[1], input[2])
+    graph[start]!.append(Node(end, cost))
+}
+
+dijkstra(start)
+for i in 1...v {
+    print(result[i] == Int.max ? "INF" : result[i])
+}
+
+func dijkstra(_ start: Int) {
+    var queue = Heap<Node>()
+    var visited = [Bool](repeating: false, count: v + 1)
+    result[start] = 0
+    queue.push((Node(start, 0)))
+    
+    while let current = queue.pop() {
+        let (node, cost) = (current.node, current.cost)
+        guard !visited[node] else { continue }
+        visited[node] = true
+        if let edge = graph[node] {
+            for next in edge {
+                let (nextNode, nextCost) = (next.node, next.cost)
+                guard !visited[nextNode] else { continue }
+                let newCost = cost + nextCost
+                if newCost < result[nextNode] {
+                    result[nextNode] = newCost
+                    queue.push(Node(nextNode, newCost))
+                }
+            }
+        }
+    }
 }
 ```
 
