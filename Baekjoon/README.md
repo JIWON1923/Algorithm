@@ -9,7 +9,8 @@ description: 문제 정리
 | 번호    | 제목                                                 | 난이도                                                           |
 | ----- | -------------------------------------------------- | ------------------------------------------------------------- |
 | 1707  | [이분 그래프](../baekjoon/undefined/gold.md#1707)       | <img src="../.gitbook/assets/12.svg" alt="" data-size="line"> |
-| 1753  | 최단경로                                               | <img src="../.gitbook/assets/12.svg" alt="" data-size="line"> |
+| 1753  | [최단경로](../baekjoon/undefined/gold.md#1753)         | <img src="../.gitbook/assets/12.svg" alt="" data-size="line"> |
+| 1916  | 최소비용 구하기                                           | <img src="../.gitbook/assets/11.svg" alt="" data-size="line"> |
 | 2206  | [벽 부수고 이동하기](../baekjoon/undefined/gold.md#2206)   | <img src="../.gitbook/assets/13.svg" alt="" data-size="line"> |
 | 2644  | [촌수계산](../baekjoon/undefined/silver.md#2644)       | <img src="../.gitbook/assets/9.svg" alt="" data-size="line">  |
 | 4963  | [섬의 개수](../baekjoon/undefined/silver.md#4963)      | <img src="../.gitbook/assets/9.svg" alt="" data-size="line">  |

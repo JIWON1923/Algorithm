@@ -4,7 +4,7 @@ description: 그래프탐색 골드 문제
 
 # 🥇 \[그래프] Gold
 
-## 1707 이분 그래프
+1707 이분 그래프
 
 [문제로 이동](https://www.acmicpc.net/problem/1707)
 
@@ -125,6 +125,10 @@ func bfs(_ n: Int) -> Bool {
 
 #### 코드
 
+<details>
+
+<summary>최소 힙 코드</summary>
+
 ```swift
 // 최소 힙 구현
 struct Heap <T: Comparable> {
@@ -182,6 +186,11 @@ struct Heap <T: Comparable> {
     }
 }
 
+```
+
+</details>
+
+```swift
 struct Node: Comparable {
     static func < (lhs: Node, rhs: Node) -> Bool {
         lhs.cost < rhs.cost
@@ -200,7 +209,7 @@ let input = readLine()!.split { $0 == " " }.map { Int($0)! }, (v, e) = (input[0]
 let start = Int(readLine()!)!
 var graph = [Int: [Node]]()
 var result = [Int](repeating: Int.max, count: v+1)
-for i in 1...v {
+for i in 1...v { 
     graph[i] = []
 }
 
@@ -238,6 +247,161 @@ func dijkstra(_ start: Int) {
         }
     }
 }
+```
+
+## 1916 최소비용 구하기
+
+[문제로 이동](https://www.acmicpc.net/problem/1916)
+
+#### 문제 요약
+
+N개의 도시가 있다. 한 도시에서 출발하여, 다른 도시에 도착하는 M개의 버스가 있을 때, A 도시에서 B 도시로 가는 최소 비용을 출력해라.
+
+#### 알고리즘
+
+1. 최소 힙을 구현한다. (스위프트도 힘 줘서 힙 내놔라)
+2. 주어진 정보를 입력받는다.
+   1. 도시의 개수를 입력 받는다. (딕셔너리의 키의 개수가 된다.)
+   2. 버스의 개수를 입력 받는다. (간선의 개수가 된다.)
+   3. city\[시작노드] = \[ (도착도시, 비용)] 으로 딕셔너리를 입력받는다. (이때 객체는 비용을 기준으로 정렬되어야 한다)
+3. 다익스트라 알고리즘을 수행한다.
+4. 도착 도시에 대한 비용을 출력한다.
+
+#### 접근방법
+
+* 전형적인 다익스트라 문제로 풀 수 있다.
+* 특정 노드에서 다른 노드로 가는데에 최소 비용을 구하기 때문이다.
+
+#### 코드
+
+<details>
+
+<summary>최소 힙 코드</summary>
+
+```swift
+struct Heap<T: Comparable> {
+    var heap = [T]()
+    
+    private func isEmpty() -> Bool {
+        heap.count <= 1
+    }
+    
+    private func getParent(_ index: Int) -> T {
+        heap[index / 2]
+    }
+    
+    private func getLeftChild(_ index: Int) -> T {
+        heap[index * 2]
+    }
+    
+    private func getRightChild(_ index: Int) -> T {
+        heap[index * 2 + 1]
+    }
+    
+    mutating func push(_ data: T) {
+        if isEmpty() { heap.append(data) }
+        var index = heap.count
+        heap.append(data)
+        
+        while index > 1 {
+            let parent = getParent(index)
+            guard parent > data else { break }
+            heap[index] = parent
+            index /= 2
+        }
+        heap[index] = data
+    }
+    
+    mutating func pop() -> T? {
+        guard !isEmpty() else { return nil }
+        let item = heap[1]
+        let last = heap.removeLast()
+        let size = heap.count - 1
+        
+        guard !isEmpty() else { return item }
+        
+        var (parent, child) = (1, 2)
+        
+        while child <= size {
+            if size > child, getLeftChild(parent) > getRightChild(parent) {
+                    child += 1
+            }
+            
+            if last <= heap[child] { break }
+            heap[parent] = heap[child]
+            parent = child
+            child *= 2
+        }
+        heap[parent] = last
+        return item
+    }
+}
+
+```
+
+</details>
+
+```swift
+// 힙에 넣을 도시 구조체이다. 객체 간 크기는 cost(비용)으로 결정된다.
+struct City: Comparable {
+    static func < (lhs: City, rhs: City) -> Bool {
+        lhs.cost < rhs.cost
+    }
+    
+    init(_ city: Int, _ cost: Int) {
+        self.city = city
+        self.cost = cost
+    }
+    
+    let city: Int
+    let cost: Int
+}
+
+let n = Int(readLine()!)! // 도시의 개수
+let m = Int(readLine()!)! // 버스의 개수
+var city = [Int: [City]]()
+Array(1...n).forEach { city[$0] = [] } // 삽입 시 편리함을 위해 도시 정보를 초기화한다.
+
+for _ in 0 ..< m {
+    let input = readLine()!.split { $0 == " " }.map { Int($0)! }
+    let (start, end, cost) = (input[0], input[1], input[2])
+    city[start]!.append(City(end, cost))
+}
+
+let input = readLine()!.split { $0 == " " }.map { Int($0)! }
+let (startCity, endCity) = (input[0], input[1])
+var costs = [Int](repeating: Int.max, count: n + 1)
+
+dijkstra()
+print(costs[endCity])
+
+// 다익스트라 알고리즘
+func dijkstra() {
+    var visited = [Bool](repeating: false, count: n+1)
+    var queue = Heap<City>()
+    costs[startCity] = 0
+    queue.push(City(startCity, 0))
+    
+    while let current = queue.pop() {
+        let (currentCity, currentCost) = (current.city, current.cost)
+        guard !visited[currentCity] else { continue }
+        visited[currentCity] = true
+        
+        if let edges = city[currentCity] {
+            for city in edges {
+                let (nextCity, nextCost) = (city.city, city.cost)
+                guard !visited[nextCity] else { continue }
+                
+                let newCost = currentCost + nextCost
+                if costs[nextCity] > newCost {
+                    costs[nextCity] = newCost
+                    queue.push(City(nextCity, newCost))
+                }
+            }
+        }
+    }
+}
+
 ```
 
 ## 2206 벽 부수고 이동하기
