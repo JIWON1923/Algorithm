@@ -396,6 +396,93 @@ func bfs(_ y: Int, _ x: Int) -> Int {
 
 
 
+## 7576 토마토
+
+[문제로 이동](https://www.acmicpc.net/problem/7576)
+
+#### 문제 요약
+
+창고에 토마토가 보관되어있다. 보관 후 하루가 지나면, 익지 않은 토마토는 인접해있는 익은토마토의 영향을 받아 하루가 지나면 익게 된다. (토마토가 혼자 저절로 익는 경우는 없다) 토마토가 며칠이 지나 다 익게 되는지, 최소 일 수를 구해라. (1은 익은 토마토, 0은 익지 않은 토마토, -1은 토마토가 없는 칸이다)
+
+#### 알고리즘
+
+1. 주어진 토마토 정보를 입력받는다.
+   1. 이때, 토마토가 입력 된 경우, tomato라는 배열에 넣는다.
+2. 입력받은 토마토 큐를 이용하여 bfs를 수행한다.
+3. 토마토 상자에 0이 있는 경우만 익는다고 생각하면 된다.(이동한다)
+4. 결과를 출력한다.
+   1. 토마토 상자를 조회하며 0이 하나라도 있다면 -1을 출력한다.
+   2. 토마토 상자의 최댓값을 출력한다.
+
+#### 접근방법
+
+* 처음에는 모든 시작 토마토에 대해 각각 bfs를 수행해야한다고 생각했다.
+* 하지만 시작 queue에 모든 토마토를 넣고 실행해도 depth별로 실행되기 때문에 이 문제를 해결할 수 있다.
+* 즉 bfs 한 번만으로 문제를 해결할 수 있음을 의미한다.
+  * 이때 queue에 기존 bfs처럼 (0,0)이 아니라 모든 토마토 배열이 들어간다면 가능하다!
+* 시간초과 해결 방법
+  * 우선 Swift에서 queue는 매우 쉽게 구현할 순 있다. (removeFirst를 지원하니까)
+  * 하지만 RemoveFirst는 시간복잡도 O(n)이 소요된다!!
+  * 여러가지 해결 방법이 있다.
+    * 배열의 인덱스를 이용하여 pop 된 것 처럼 사용한다. (내가 채택한 방법)
+    * reverse() -> removeFirtst() -> reverse()를 사용한다. (reverse는 O(1)이다)
+    * 실제 큐 구현하기 등 여러가지가 있다.&#x20;
+
+#### 코드
+
+```swift
+let input = readLine()!.split { $0 == " " }.map { Int($0)! }, (m, n) = (input[0], input[1])
+var map = [[Int]]()
+var tomato = [(Int, Int)]()
+
+// 정보를 입력받는다. 단, 토마토인 경우 따로 배열에 저장한다.
+for y in 0 ..< n {
+    let input = readLine()!.split { $0 == " " }.map { Int($0)! }
+    for x in 0 ..< m {
+        if input[x] == 1 {
+            tomato.append((y, x))
+        }
+    }
+    map.append(input)
+}
+
+bfs()
+print(getResult())
+
+func bfs() {
+    let dy = [-1, 0, 1, 0]
+    let dx = [0, 1, 0, -1]
+    var index = 0
+    
+    // 토마토 배열을 이용하여 bfs를 수행한다.
+    while tomato.count > index {
+        let (y, x) = tomato[index]
+        index += 1
+        
+        for i in 0 ..< 4 {
+            let ny = dy[i] + y
+            let nx = dx[i] + x
+            
+            guard 0..<n ~= ny && 0..<m ~= nx && map[ny][nx] == 0 else { continue }
+            map[ny][nx] = map[y][x] + 1
+            tomato.append((ny, nx))
+        }
+    }
+}
+
+func getResult() -> Int {
+    var result = 0
+    for t in map {
+        if t.contains(0) { return -1 }
+        result = max(result, t.max()!)
+    }
+    return result - 1
+}
+
+```
+
+
+
 ## 16236 아기상어
 
 [문제로 이동](https://www.acmicpc.net/problem/16236)
