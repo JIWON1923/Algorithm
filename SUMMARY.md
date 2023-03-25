@@ -5,6 +5,7 @@
   * [Dynamic Programming](undefined/dynamic-programming.md)
   * [수학 공식](undefined/undefined.md)
   * [그래프 탐색](undefined/undefined-1.md)
+  * [Sorting](undefined/sorting.md)
 * [Beakjoon](Baekjoon/README.md)
   * [그래프 탐색](baekjoon/undefined/README.md)
     * [🥇 \[그래프\] Gold](baekjoon/undefined/gold.md)
