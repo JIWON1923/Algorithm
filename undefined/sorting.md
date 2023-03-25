@@ -101,3 +101,46 @@ var array = [10, 2, 33, 20, 7]
 bubbleSort(&array)
 print(array)
 ```
+
+
+
+## Selection Sort
+
+{% hint style="info" %}
+배열에 원소를 하나씩 추가하며 해당 원소의 위치를 결정하는 알고리즘이다.
+
+정렬된 K-1 개의 배열에 대해&#x20;
+{% endhint %}
+
+### 알고리즘
+
+* 이 과정은 i 번째 원소를 삽입하기 위한 과정이라고 생각하자.
+
+1. i 번째 원소를 임시 변수에 저장한다.
+2. i-1 번째부터 1번째까지 반복하며, 자신보다 크기가 작은 원소가 나올 때 까지 반복하며 해당 원소의 위치를 찾아 저장한다.
+
+### 특징
+
+* for loop는 n-1 번 반복한다.
+* 삽입의 경우, 최악의 경우 i-1 번 비교하게 된다.&#x20;
+* 최악의 경우 시간복잡도는 $$O(n^2)$$
+  * 역순으로 정렬되어있는 경우, 매번 i-1회 탐색해야한다.
+* 최선의 경우 시간복잡도는 $$O(n)$$
+  * 처음부터 배열이 정렬되어있는 경우, 1번의 비교로 해당 원소의 위치가 결정될 수 있다.
+
+### 코드
+
+```swift
+var array = [10, 2, 33, 20, 7]
+insertSort(&array)
+print(array)
+
+func insertSort(_ array: inout [Int]) {
+    for i in 1 ..< array.count {
+        for j in stride(from: i, to: 0, by: -1) {
+            guard array[j] < array[j-1] else { continue }
+            array.swapAt(j, j-1)
+        }
+    }
+}
+```
