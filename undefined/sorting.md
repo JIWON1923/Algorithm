@@ -297,3 +297,87 @@ func quickSort(_ array: [Int]) -> [Int] {
     return quickSort(left) + [pivot] + quickSort(right)
 }
 ```
+
+## Heap Sort
+
+{% hint style="info" %}
+힙 정렬은 최대 힙이나 최소 힙을 구성하여 정렬하는 방법이다.
+
+* 내림차순 정렬 : 최대힙
+* 오름차순 정렬 : 최소 힙
+{% endhint %}
+
+### 알고리즘
+
+1. 주어진 데이터를 heap으로 만든다.&#x20;
+2. 힙에서 최댓값과 마지막 리프노드와 자리를 바꾼다.&#x20;
+3. 힙의 크기가 1 줄어든 것으로 간주한다. (마지막 값은 힙의 일부가 아닌 것으로 간주한다. )
+4. 루트노드에 대해서 Heapify(1)을 한다. (remove node 했을 때의 과정을 반복한다) &#x20;
+5. 2번 \~ 4번 과정을 반복한다.
+
+### 특징
+
+* 최악의 경우 시간 복잡도 $$O(NlogN)$$
+* sorts in place - 추가 배열이 필요하지 않다.
+* 이진 힙 자료구조(binary heap)를 사용한다.
+  * Heap 자료구조
+    * complete binary tree이면서 ( -> 인덱스로 부모, 자식 관계를 표현할 수 있게 된다.)
+    * Heap property를 만족해야한다. (부모와 자식 간 관계)
+      * maxHeap : 부모는 자식보다 크거나 같다.
+      * minHeap : 부모는 자식보다 작거나 같다.
+    * 힙은 동일한 데이터라도, 삽입 순서에 따라 다양한 형태를 가질 수 있다.
+
+### 코드
+
+```
+HEAPSORT(A)                     // O(NlogN)
+
+BUILD-MAX-HEAP(A)               // O(n)
+for i <- heapSize downto 2 do   // n-1 times
+    exchange A[1] <-> A[i]      // O(1)
+    heapSize <- heapSize - 1    // O(1) 
+    MAX-HEAPFIY(A, 1)           // O(logN)
+```
+
+```swift
+ 
+func buildMaxHeap(_ array: [Int]) -> [Int] {
+    var result = array // 정렬되지 않은 리스트
+    
+    for i in 1 ..< array.count { // 1번부터 마지막 노드까지 조회
+        var childNode = i
+        while childNode != 0 { // i번째 노드의 위치를 지정한다.
+            let root = childNode / 2
+            if result[root] < result[childNode] {
+                result.swapAt(root, childNode)
+            }
+            childNode = root
+        }
+    }
+    return result
+}
+
+func heapSort(_ array: [Int], _ reverse: Bool = false) -> [Int] {
+    var tempList = array
+    var result = [Int]()
+    
+    for i in stride(from: array.count-1, to: -1, by: -1) {
+        if i == 0 { // 원소가 하나만 있을 때는 단순히 추가해주면 된다.
+            guard let last = tempList.popLast() else { break }
+            result.append(last)
+        } else { // 남은 원소가 여러개라면, 남은 리스트를 기준으로 힙을 만든다.
+            tempList = buildMaxHeap(tempList)
+            tempList.swapAt(0, i) // 리프노드를 맨 앞으로 가져온다.
+            guard let last = tempList.popLast() else { break } // 루트 노드를 제거한 후 추가한다.
+            result.append(last)
+        }
+    }
+    
+    if !reverse { // 정렬 기준 선택
+        result.reverse()
+    }
+    
+    return result
+}
+
+```

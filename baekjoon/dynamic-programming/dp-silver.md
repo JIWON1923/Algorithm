@@ -194,7 +194,7 @@ n = 3이라면 (1+1+1, 1+2, 2+1, 3) 4가지로 표현할 수 있다.
     * F(6)에서 1을 더하면 7, F(5)에서 2를 더하면, F(4)에서 3을 더하면 7이 된다.
 * 경우의 수와 연산을 헷갈리지 말자!!
 
-![](<../../.gitbook/assets/image (3).png>)![](<../../.gitbook/assets/image (1) (2).png>)
+![](<../../.gitbook/assets/image (3) (1).png>)![](<../../.gitbook/assets/image (1) (2).png>)
 
 #### 코드
 
