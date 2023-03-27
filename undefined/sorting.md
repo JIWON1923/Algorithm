@@ -17,7 +17,7 @@ description: 정렬 알고리즘 개념 정리
 3. 기타
    1. Radix sort&#x20;
 
-## Selection Sort
+## Insertion Sort
 
 ### 알고리즘
 
