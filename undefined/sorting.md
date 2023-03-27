@@ -144,3 +144,112 @@ func insertSort(_ array: inout [Int]) {
     }
 }
 ```
+
+## Merge Sort
+
+### 분할정복법
+
+* merge sort와 quick sort에서 공통으로 사용되는 기법이다. (본질적으로 recursion을 사용한다)
+* 3가지 단계로 거쳐러 문제를 해결하는 것&#x20;
+  * 분할 : 해결하고자 하는 문제를 작은 크기의 **동일한 문제**들로  분할한다.&#x20;
+  * 정복 : 각각의 작은 문제를 순환적으로 해결한다. (동일한 문제들로 분할되므로, 작은 문제를 해결하기 위해 특수한 알고리즘이 요구되지 않는다. 즉, 최종 문제 해결 알고리즘과 작은 문제 해결 알고리즘이 동일하다. )
+  * 합병 : 작 문제의 해를 합하여 원래 문제에 대한 해를 구한다.
+
+### 알고리즘
+
+1. 데이터가 저장된 배열을 절반으로 나눈다.&#x20;
+2.  각각을 순환적으로 정렬한다.
+
+    길이가 1인 리스트로 나누어질 것이다.
+3.  정렬된 두 개의 배열을 합쳐 전체를 정렬한다. (이 부분의 구현이 필요하다)
+
+    길이가 1인 리스트를 합치는 과정에서 정렬을 수행해야한다.
+
+### 특징
+
+$$T(n)  = 0, (n==1일 때)$$
+
+$$T(n) = T(n/2) + T(n/2) + n$$
+
+* 반으로 나눈 리스트를 합칠 때 연산이 존재한다.
+  * 리스트를 반으로 나누는 횟수 = log(N)이다. (트리의 높이 생각)
+  * 합칠 때 n 만큼의 횟수가 소요된다.
+  * 따라서 시간복잡도는 $$O(N) = NlogN$$
+
+### 코드
+
+```
+mergeSort(A[], p, r) { // A[p...r]을 정렬한다.
+    if (p < r) then {
+        q <- (p+q)/2
+        mergeSort(A, p, q)
+        merge(A, p, q, r)
+    }
+}
+
+merge(A[], p, q, r) {    
+    정렬되어있는 두 배열 A[p...q], A[q+1...r]을 합하여
+    정렬된 배열 A[p...r]을 만든다.
+}
+```
+
+```swift
+func mergesort(_ array: [Int]) -> [Int] {
+    guard array.count > 1 else { return array }
+    let center = array.count / 2
+    let left = Array(array[0..<center])
+    let right = Array(array[center..<array.count])
+    
+    func merge(_ left: [Int], _ right: [Int]) -> [Int] {
+        var left = left
+        var right = right
+        var result = [Int]()
+        
+        while !left.isEmpty && !right.isEmpty {
+            if left[0] < right[0] {
+                result.append(left.removeFirst())
+            } else {
+                result.append(right.removeFirst())
+            }
+        }
+        
+        return result + left + right
+    }
+    
+    return merge(mergesort(left), mergesort(right))
+}
+
+```
+
+```swift
+func mergeSort(array: [Int]) -> [Int] {
+    guard array.count > 1 else { return array }
+    let center = array.count / 2
+    let leftArray = mergeSort(array: Array(array[0..<center]))
+    let rightArray = mergeSort(array: Array(array[center..<array.count]))
+    return merge(left: leftArray, right: rightArray)
+}
+
+func merge(left: [Int], right: [Int]) -> [Int] {
+    var leftIndex = 0
+    var rightIndex = 0
+    var result = [Int]()
+    
+    while leftIndex < left.count, rightIndex < right.count {
+        if left[leftIndex] < right[rightIndex] {
+            result.append(left[leftIndex])
+            leftIndex += 1
+        } else {
+            result.append(right[rightIndex])
+            rightIndex += 1
+        }
+    }
+    if leftIndex < left.count {
+        result += Array(left[leftIndex ..< left.count])
+    } else {
+        result += Array(right[rightIndex ..< right.count])
+    }
+    return result
+}
+```
+
