@@ -381,3 +381,17 @@ func heapSort(_ array: [Int], _ reverse: Bool = false) -> [Int] {
 }
 
 ```
+
+
+
+## 참고한 글 및 강의
+
+\[1] [권오흠 교수님의 기본 정렬 알고리즘 강의](https://www.youtube.com/watch?v=0dG7xTt5IfQ)
+
+\[2] 권오흠 교수님의 합병 정렬 알고리즘 강의
+
+\[3] 권오흠 교수님의 빠른 정렬 알고리즘 강의
+
+\[4] [개발자 소돌이님의 알고리즘 포스팅](https://babbab2.tistory.com/101)
+
+\[5] [Dev Pingu님의 힙 정렬 알고리즘 포스팅](https://icksw.tistory.com/91)
