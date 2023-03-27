@@ -253,3 +253,47 @@ func merge(left: [Int], right: [Int]) -> [Int] {
 }
 ```
 
+## Quick Sort
+
+{% hint style="info" %}
+분할 정복법을 사용한다. (데이터 분할 방법에서 Merge Sort와 차이가 있다.)
+
+특정 값을 기준으로 분할한다. (최악의 경우 시간 복잡도는 동일하다)
+{% endhint %}
+
+### 특징
+
+* Quick sort의 분할에서는 반으로 분리된다는 보장이 없다.
+  * 최악의 경우는 pivot이 리스트에서 가장 큰 값이거나, 가장 작은 값인 경우이다.
+* 분할 후 Pivot 앞에는 pivot보다 작고, 뒤는 크다.
+* 분할 단계에서 정렬이 수행되기 때문에 합병 단계에서 특별한 알고리즘이 요구되지 않는다.
+
+
+
+```
+quicksort(A[], p, r) {
+    if (p < r) then 
+        q = partition(A, p, r) // 분할, q는 pivot의 위치
+        quicksort(A, p, q-1)   // 왼쪽 부분 배열 정렬
+        quicksort(A, q+1, r)   // 오른쪽 부분 배열 정렬
+    }
+}
+
+partition(A[], p, r) {
+    배열 A[p...r]의 원소들을 A[r]을 기준으로 양쪽으로 재배치하고,
+    A[r]이 자리한 위치를 리턴한다.   // 피봇의 위치를 리턴한다.
+}
+```
+
+```swift
+func quickSort(_ array: [Int]) -> [Int] {
+    guard array.count > 1 else { return array }
+    var array = array
+    let pivot = array.removeLast()
+    
+    let left = array.filter { $0 < pivot }
+    let right = array.filter { $0 >= pivot }
+    
+    return quickSort(left) + [pivot] + quickSort(right)
+}
+```

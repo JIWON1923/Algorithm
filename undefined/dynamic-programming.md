@@ -10,7 +10,7 @@
 
 피보나치 수열 $$F(n) = F(n-1) + F(n-2)$$
 
-![](<../.gitbook/assets/image (2) (1).png>)<img src="../.gitbook/assets/image.png" alt="" data-size="original">
+![](<../.gitbook/assets/image (2) (1).png>)<img src="../.gitbook/assets/image (2).png" alt="" data-size="original">
 
 #### 재귀함수를 이용한 피보나치 구현
 
