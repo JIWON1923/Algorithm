@@ -340,44 +340,41 @@ for i <- heapSize downto 2 do   // n-1 times
 ```
 
 ```swift
- 
-func buildMaxHeap(_ array: [Int]) -> [Int] {
-    var result = array // 정렬되지 않은 리스트
-    
-    for i in 1 ..< array.count { // 1번부터 마지막 노드까지 조회
-        var childNode = i
-        while childNode != 0 { // i번째 노드의 위치를 지정한다.
-            let root = childNode / 2
-            if result[root] < result[childNode] {
-                result.swapAt(root, childNode)
-            }
-            childNode = root
-        }
-    }
-    return result
-}
-
 func heapSort(_ array: [Int], _ reverse: Bool = false) -> [Int] {
-    var tempList = array
+    var array = array
     var result = [Int]()
     
-    for i in stride(from: array.count-1, to: -1, by: -1) {
-        if i == 0 { // 원소가 하나만 있을 때는 단순히 추가해주면 된다.
-            guard let last = tempList.popLast() else { break }
-            result.append(last)
-        } else { // 남은 원소가 여러개라면, 남은 리스트를 기준으로 힙을 만든다.
-            tempList = buildMaxHeap(tempList)
-            tempList.swapAt(0, i) // 리프노드를 맨 앞으로 가져온다.
-            guard let last = tempList.popLast() else { break } // 루트 노드를 제거한 후 추가한다.
-            result.append(last)
+    for i in stride(from: array.count - 1 , to: -1, by: -1) {
+        if i == 0 {                           // 원소가 하나만 있을 때는 단순히 추가해주면 된다.
+            result.append(array.removeLast())
+        } else {                              // 남은 원소가 여러개라면, 남은 리스트를 기준으로 힙을 만든다.
+            array = buildMaxHeap(array)
+            array.swapAt(i, 0)                // 리프노드를 맨 앞으로 가져온다.
+            result.append(array.removeLast()) // 루트 노드를 제거한 후 결과 리스트에 추가한다.
         }
     }
-    
-    if !reverse { // 정렬 기준 선택
+     
+     if !reverse { // 정렬 기준 선택
         result.reverse()
     }
     
     return result
+}
+
+func buildMaxHeap(_ array: [Int]) -> [Int] {
+    var array = array                            // 정렬되지 않은 리스트
+    
+    for i in 1 ..< array.count {                 // 1번부터 마지막 노드까지 조회
+        var childNode = i
+        while childNode != 0 {                   // i번째 노드의 위치를 지정한다.
+            let parent = childNode / 2
+            if array[childNode] > array[parent] {
+                array.swapAt(childNode, parent)
+            }
+            childNode = parent
+        }
+    }
+    return array
 }
 
 ```
