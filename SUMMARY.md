@@ -6,6 +6,7 @@
   * [수학 공식](undefined/undefined.md)
   * [그래프 탐색](undefined/undefined-1.md)
   * [Sorting](undefined/sorting.md)
+  * [탐색 알고리즘](undefined/undefined-2.md)
 * [Beakjoon](Baekjoon/README.md)
   * [그래프 탐색](baekjoon/undefined/README.md)
     * [🥇 \[그래프\] Gold](baekjoon/undefined/gold.md)
