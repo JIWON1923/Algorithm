@@ -361,22 +361,18 @@ func heapSort(_ array: [Int], _ reverse: Bool = false) -> [Int] {
     return result
 }
 
-func buildMaxHeap(_ array: [Int]) -> [Int] {
-    var array = array                            // 정렬되지 않은 리스트
+func buildMaxHeap(_ array: inout [Int]) {
     
-    for i in 1 ..< array.count {                 // 1번부터 마지막 노드까지 조회
-        var childNode = i
-        while childNode != 0 {                   // i번째 노드의 위치를 지정한다.
-            let parent = childNode / 2
-            if array[childNode] > array[parent] {
-                array.swapAt(childNode, parent)
-            }
-            childNode = parent
+    for i in 0 ..< array.count {                 // 1번부터 마지막 노드까지 조회
+        var child = i
+        while child != 0 {                       // i번째 노드의 위치를 지정한다.
+            let parent = child / 2
+            if array[parent] > array[child] { break }
+            array.swapAt(parent, child)
+            child = parent
         }
     }
-    return array
 }
-
 ```
 
 
