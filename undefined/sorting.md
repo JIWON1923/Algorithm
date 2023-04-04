@@ -17,7 +17,7 @@ description: 정렬 알고리즘 개념 정리
 3. 기타
    1. Radix sort&#x20;
 
-## Insertion Sort
+## Selection Sort
 
 ### 알고리즘
 
@@ -104,7 +104,7 @@ print(array)
 
 
 
-## Selection Sort
+## Insertion Sort
 
 {% hint style="info" %}
 배열에 원소를 하나씩 추가하며 해당 원소의 위치를 결정하는 알고리즘이다.
@@ -132,10 +132,10 @@ print(array)
 
 ```swift
 var array = [10, 2, 33, 20, 7]
-insertSort(&array)
+insertionSort(&array)
 print(array)
 
-func insertSort(_ array: inout [Int]) {
+func insertionSort(_ array: inout [Int]) {
     for i in 1 ..< array.count {
         for j in stride(from: i, to: 0, by: -1) {
             guard array[j] < array[j-1] else { continue }
