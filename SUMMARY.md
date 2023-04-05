@@ -18,5 +18,6 @@
     * [🥈 \[DP\] Silver](baekjoon/dynamic-programming/dp-silver.md)
   * [단계별로 풀기](baekjoon/undefined-2/README.md)
     * [\[1단계\] 입출력과 사칙연산](baekjoon/undefined-2/1.md)
+  * [Presum (누적합)](baekjoon/presum.md)
 * [Programmers](Programmers/README.md)
 * [이것이 코딩테스트다](undefined-1.md)
