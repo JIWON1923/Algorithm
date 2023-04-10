@@ -2,7 +2,7 @@
 description: 완전탐색 Silver 등급 문제 해설
 ---
 
-# 🥈 Silver
+# 🥈 \[완전 탐색] Silver
 
 
 
@@ -170,6 +170,93 @@ for i in 1 ... 10000 {
 // 셀프넘버 출력
 for i in 1 ... 10000 {
     if isSelfNumber[i] { print(i) }
+}
+
+```
+
+## 14889 스타트와 링크
+
+[문제로 이동](https://www.acmicpc.net/problem/14889)
+
+#### 문제 요약
+
+선수들의 능력치 정보가 적혀진 N \* N 배열 S가 있다. 이때, 스타트와 링크 팀으로 능력치의 차이가 최소가 되도록 N/2명으로 나누고자 한다. 이때 최소 능력치 차이를 구해라. 능력의 합은 배열 $$Sij + Sji$$의 합으로 구성되며, Sij와 Sji는 같지 않을 수 있다.
+
+#### 알고리즘
+
+1. 경우의 수를 계산한다.
+2. 경우의 수에 따른 능력치 차이를 계산한다.
+3. 능력치 차이 중 최솟 값을 출력한다.
+
+#### 접근 방법
+
+* 우선 이 문제는 무조건 모든 경우의 수를 파악해야 풀 수 있는 문제이다.
+  * 능력치에 규칙이 있는 것도 아니고, 무작위로 주어지는 숫자니까 반드시 모든 경우의 수를 파악해야한다.
+* 처음에는 링크팀의 능력치 = 전체 능력치 - 스타트 팀의 능력치라고 생각했지만, 아니다.
+  * \[1, 2] / \[3, 4]로 나눴을 때를 생각해보면 쉽다.
+    * 스타트 팀의 능력치 = S12 + S21
+    * 링크 팀의 능력치 = S34 + S43이다. 근데 위 공식을 쓰게 되면, S13, S14, S23,  S24 값도 같이 들어가게된다.&#x20;
+  * 따라서, 모든 경우에 수에 대해 각 팀의 능력치를 각각 구해줘야한다.
+* 경우의 수 구하는 방법
+  * N은 20이하이므로, 비트마스킹을 이용해서 경우의 수를 쉽게 구할 수 있다.
+  * 또한 \[1, 2], \[3,4]와 \[3, 4], \[1,2]는 완전히 같은 결과이므로, 전체 경우의 수에서 반만 계산하는 것이 좋다!
+
+#### 코드
+
+```swift
+let n = Int(readLine()!)!
+var skillBoard = [[Int]]()
+var result = Int.max
+
+for _ in 0 ..< n {
+    skillBoard.append(readLine()!.split { $0 == " " }.map { Int($0)! })
+}
+
+getTeams()
+print(result)
+
+func getTeams() {
+    
+    // 비트마스킹을 이용해 경우의 수 구하기
+    for i in 0 ..< (1 << n)/2 {
+        var startTeams = [Int]()
+        var linkTeams = [Int]()
+        for j in 0 ..< n {
+            if i & ( 1 << j ) != 0 {
+                startTeams.append(j)
+            } else {
+                linkTeams.append(j)
+            }
+        }
+        
+        // 팀원이 n/2로 이루어져 있는지 확인한다.
+        guard startTeams.count == n/2 else { continue }
+        
+        let startSkill = calculateSkill(teams: startTeams)
+        let linkSkill = calculateSkill(teams: linkTeams)
+        let gap = calculateSkillGap(startSkill: startSkill, linkSkill: linkSkill)
+        
+        // 차이의 최솟값을 저장한다.
+        result = min(result, gap)
+    }
+}
+
+func calculateSkill(teams: [Int]) -> Int {
+    var teamSkill = 0
+    
+    // Sij + Sji 값을 계산한다.
+    for i in 0 ..< teams.count {
+        for j in i ..< teams.count {
+            let x = teams[i], y = teams[j]
+            teamSkill += skillBoard[x][y]
+            teamSkill += skillBoard[y][x]
+        }
+    }
+    return teamSkill
+}
+
+func calculateSkillGap(startSkill: Int, linkSkill: Int) -> Int {
+    return abs(startSkill - linkSkill)
 }
 
 ```

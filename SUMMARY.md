@@ -1,7 +1,6 @@
 # Table of contents
 
-* [README](README.md)
-* [알고리즘 개념](undefined/README.md)
+* [알고리즘 개념](README.md)
   * [Dynamic Programming](undefined/dynamic-programming.md)
   * [수학 공식](undefined/undefined.md)
   * [그래프 탐색](undefined/undefined-1.md)
@@ -22,3 +21,4 @@
     * [\[1단계\] 입출력과 사칙연산](baekjoon/undefined-2/1.md)
 * [Programmers](Programmers/README.md)
 * [이것이 코딩테스트다](undefined-1.md)
+* [README](<README (1).md>)

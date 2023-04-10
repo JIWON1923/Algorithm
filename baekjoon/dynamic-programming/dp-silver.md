@@ -1,3 +1,7 @@
+---
+description: dynamic programming
+---
+
 # 🥈 \[DP] Silver
 
 ## 1463 1로 만들기
@@ -194,7 +198,7 @@ n = 3이라면 (1+1+1, 1+2, 2+1, 3) 4가지로 표현할 수 있다.
     * F(6)에서 1을 더하면 7, F(5)에서 2를 더하면, F(4)에서 3을 더하면 7이 된다.
 * 경우의 수와 연산을 헷갈리지 말자!!
 
-![](<../../.gitbook/assets/image (3) (1).png>)![](<../../.gitbook/assets/image (1) (2).png>)
+![](<../../.gitbook/assets/image (3) (1).png>)![](<../../.gitbook/assets/image (1).png>)
 
 #### 코드
 
@@ -264,50 +268,6 @@ for i in 0 ..< n {
         }
     }
     result[i] = count
-}
-
-print(result.max()!)
-
-```
-
-## 14501 퇴사
-
-[문제로 이동](https://www.acmicpc.net/problem/14501)
-
-#### 문제 요약
-
-오늘부터 N+1일 째 되는 날, 퇴사를 하려고 한다. 남은 N일 간 상담을 받아, 최대한 많은 금액을 받으려고 한다. 이때, 받을 수 있는 최대 금액을 구해라. (배열 Tn에는 상담에 걸리는 시간이 저장 돼 있고, Pn에는 상담 시 받을 수 있는 금액이 저장 돼 있다.)
-
-#### 접근 방법
-
-* i 번째 날짜에 상담을 받는다고 할 때, 다음과 같은 연산을 할 수 있다.
-    * i + T(i) 이후 모든 result에 접근한다.
-    * result[next], result[i] + price[next] 중 더 큰 값을 계속 구해나간다.
-
-#### 코드
-
-```swift
-
-let n = Int(readLine()!)!
-var times = [Int]()
-var prices = [Int]()
-
-for i in 0 ..< n {
-    let input = readLine()!.split { $0 == " " }.map { Int($0)! }
-    let (time, price) = (input[0], input[1])
-    times.append(time)
-    prices.append(price)
-    if i + time > n { prices[i] = 0 }
-}
-var result = prices
-
-for i in 0 ..< n {
-    
-    let next = i + times[i]
-    guard next < n else { continue }
-    for j in next ..< n {
-        result[j] = max(result[j], result[i] + prices[j])
-    }
 }
 
 print(result.max()!)
